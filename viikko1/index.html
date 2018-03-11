@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tietokantasovellus, kevät 2018, periodi IV | Viikko 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="../stylesheets/styles-4f205160.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
+
+    <link rel="stylesheet" href="https://materiaalit.github.io/code-states-visualizer-cdn/app.css" />
+    <link rel="stylesheet" href="https://materiaalit.github.io/typonator-cdn/app.css" />
+    <link rel="stylesheet" href="https://crowdsorcerer.testmycode.io/dist/app.css" />
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47575342-8', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div class="header-wrapper">
+        <div class="browser-support-warning" id="browser-support-warning" style="display: none;">
+  Kaikki tämän materiaalin osat eivät välttämättä tuo nykyistä selaintasi. Voisitko harkita vaihtamista <a href="https://www.google.com/chrome/browser/desktop/" target="_blank" rel="noopener">Chrome</a> tai <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">Firefox</a> selaimeen?
+  <span class="browser-support-warning__close">Selvä!</span>
+</div>
+
+
+        <nav class="navbar navbar-light bg-white">
+  <a class="navbar-brand" href="http://mooc.fi" alt="MOOC" target="_blank" rel="noopener">
+    <span class="icon-mooc"></span>
+  </a>
+
+  <ul class="nav navbar-nav hidden-md-down">
+      <li class="nav-item ">
+        <a href="../" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=index.html&gt;')">Johdanto</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../tyovalineet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=tyovalineet.html&gt;')">Kurssin työvälineet</a>
+      </li>
+      <li class="nav-item ">
+        <a href="../python-alkeet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
+      </li>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=viikko1.html&gt;')">Viikko 1</a>
+      </li>
+  </ul>
+
+  <div class="float-xs-right navbar__buttons">
+    <div class="dropdown" id="mobile-nav-dropdown">
+      <button class="btn btn-secondary dropdown-toggle navbar__mobile-nav-toggle" data-toggle="dropdown">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="dropdown-menu">
+      </div>
+    </div>
+
+    <a href="https://riot.im/app/#/room/#tsoha:matrix.org" target="_blank" rel="noopener" class="btn btn-secondary">
+      <span class="hidden-md-down">Chat</span>
+      <i class="fa fa-commenting-o hidden-lg-up"></i>
+    </a>
+
+    <button class="btn btn-secondary" id="table-of-contents-toggle">
+      <span class="hidden-md-down">Sisällysluettelo</span>
+      <i class="fa fa-ellipsis-h hidden-lg-up"></i>
+    </button>
+
+    <button class="btn btn-primary" id="tmc-login-toggle">Kirjaudu sisään</button>
+  </div>
+</nav>
+
+      </div>
+
+      <div class="content-wrapper">
+        <div class="container material" id="material">
+
+          
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Viikon 1 etapit
+  </div>
+
+  <div class="hint__body">
+    
+  <ul>
+    <li>
+      Olet asentanut kurssilla tarvittavat työvälineet.
+    </li>
+    <li>
+      Olet lukenut materiaalissa olevan lyhyen Python-oppaan ja kokeillut siinä olevia esimerkkejä.
+    </li>
+    <li>
+      Olet tutustunut web-sovellusten toimintaan ja toteuttanut tämän sivun ohjeistusta noudattaen ensimmäisen Flaskia käyttävän web-sovelluksesi.
+    </li>
+    <li>
+      Olet valinnut harjoitustyöllesi aiheen.
+    </li>
+    <li>
+      Olet luonut harjoitustyölle github-repositoryn, jossa on lyhyt kuvaus harjoitustyön aiheesta.
+    </li>
+  </ul>
+  
+
+  </div>
+</div>
+
+
+<h1 class="material-heading">
+    Web-sovellusten perusteet
+
+</h1>
+
+<p>
+  Web-sovellukset koostuvat selain- ja palvelinpuolesta. Käyttäjä käyttää selainohjelmistoa (esim. Chrome, kännykän selain, pädin selain, Kindlen selain, ...), joka tekee käyttäjän toimien perusteella pyyntöjä verkossa sijaitsevalle palvelimelle. Kun palvelin vastaanottaa pyynnön, se käsittelee pyynnön ja rakentaa vastauksen. Vastaus voi sisältää esimerkiksi web-sivun HTML-koodia tai jossain muussa muodossa olevaa tietoa.
+</p>
+
+<p>
+  Palvelin on kone aivan samalla tavalla kuin kännykkä, kannettava tietokone, pädi ym on kone. Kumpikin on kiinni verkossa, ja kummallakin on (ainakin välillisesti) koneen tunnistava IP-osoite. Kun käyttäjä tekee selainohjelmistolla pyynnön, pyyntö ohjautuu käyttäjän koneen verkkoyhteyden kautta palvelimen koneelle, jossa palvelinohjelmisto vastanottaa pyynnön ja käsittelee sen. Vaikka käyttäjä hakee tyypillisesti tekstimuotoisia osoitteita kuten <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a>, ei koneet näistä ymmärrä -- verkossa on erilliset palvelut tekstimuotoisten osoitteiden muuntamiseksi IP-osoitteiksi.
+</p>
+
+<p>
+  Selaimen tekemät pyynnöt noudattavat HTTP-protokollaa, joka on määritelty standardi pyyntöjen tekemiseen sekä niiden käsittelyyn. Resurssien -- eli tietyn osoitteen polkujen -- hakeminen tapahtuu HTTP-protokollan GET-tyyppisillä pyynnöillä, kun taas tiedon lähettäminen tapahtuu HTTP-protokollan POST-tyyppisillä pyynnöillä.
+</p>
+
+<p>
+  Selaimet tarjoavat tyypillisesti mahdollisuuden haettavien resurssien tarkasteluun. Esimerkiksi Google Chromessa selaintyövälineet saa auki painamalla näppäinyhdistelmää <code>Ctrl+Shift+I</code> tai valitsemalla Chromen valikosta <code>Developer Tools</code>. Selaimen työvälineet näyttävät seuraavalta.
+</p>
+
+<img src="../img/devtools-1-cb9565d1.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Kun selaimeen kirjoittaa osoitteen -- alla olevassa esimerkissä <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> -- tekee selain GET-tyyppisen pyynnön osoitteeseen eli hakee osoitteessa olevalta palvelimelta polun osoittamaa resurssia.
+</p>
+
+<p>
+  Kun palvelin palauttaa resurssin, tyypillisesti HTML-kielisen sivun, voi resurssissa olla linkkejä myös toisiin resursseihin. Selaimet on ohjelmointu siten, että esimerkiksi HTML-kielisen sivun resurssit haetaan automaattisesti. Yhtä sivua haettaessa saatetaan noutaakin todellisuudessa kymmeniä ellei satoja resursseja.
+</p>
+
+<img src="../img/devtools-2-4def13b4.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Yllä olevassa kuvassa osoitteessa <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> olevan sivun lataus on vielä kesken. Sivua rakennettaessa on tehty 101 pyyntöä, ja tietoa on siirretty 1.6 megatavua.
+</p>
+
+
+<p>
+  Web-sovellusten kehitys on tapana jakaa selainohjelmistojen kehitykseen ja palvelinohjelmistojen kehitykseen, vaikkakin nykyään molemmat kattava fullstack-kehitys on yhä suositumpaa.
+</p>
+
+<p>
+  Selainohjelmistoja ja käyttöliittymää kehitettäessä painotetaan rakenteen, ulkoasun ja toiminnallisuuden erottamista toisistaan. Karkeasti voidaan sanoa, että selaimessa näkyvän sivun sisältö ja rakenne määritellään HTML-tiedostoilla, ulkoasu CSS-tiedostoilla ja toiminnallisuus JavaScript-tiedostoilla.
+</p>
+
+<p>
+  Palvelinpuolen toiminnallisuutta toteutettaessa keskitytään tyypillisesti selainohjelmiston tarvitsevan "APIn" suunnitteluun ja toteutukseen, sivujen muodostamiseen selainohjelmistoa varten, datan tallentamiseen ja käsittelyyn, sekä sellaisten laskentaoperaatioiden toteuttamiseen, joita selainohjelmistossa ei kannata tai voida tehdä.
+</p>
+
+
+
+<h1 class="material-heading">
+    Web-kehitys Flask-kirjastolla
+
+</h1>
+
+<p>
+  Harjoitustyössä käytetään Pythonin <a href="http://flask.pocoo.org/" target="_blank">Flask</a>-kirjastoa web-sovelluksen toiminnallisuuden toteuttamiseen. Tutustutaan lyhyesti pienen Flask-sovelluksen toteuttamiseen. 
+</p>
+
+<h2 class="material-heading">
+    Virtuaaliympäristön luominen
+
+</h2>
+
+<p>
+  Luodaan ensin hakemisto sovellustamme varten ja luodaan sen sisälle Python-virtuaaliympäristö komennolla <code>python3 -m venv <em>venv</em></code>. Kutsutaan sovellusta nimellä <code>demo</code>. 
+</p>
+
+<pre class="terminal">$ ls
+$ mkdir demo
+$ ls
+demo
+$ cd demo
+$ python3 -m venv venv
+$ ls
+venv
+$ 
+</pre>
+
+<p>
+  Nyt luomallamme virtuaaliympäristöllä on kansio <code>venv</code>. Tarkastellaan sen sisältöä.
+</p>
+
+<pre class="terminal">$ ls venv
+bin  include  lib  lib64  pyvenv.cfg  share
+$
+</pre>
+
+<p>
+  Kansiossa on kansiot <code>bin</code>, <code>include</code>, <code>lib</code> ja <code>share</code>. Kansio <code>lib64</code> on todellisuudessa linkki kansioon <code>lib</code>. Tiedosto <code>pyvenv.cfg</code> sisältää virtuaaliympäristön asetukset.
+</p>
+
+<p>
+  Kun haluamme ottaa luodun virtuaalisen Python-ympäristön käyttöön, aktivoimme sen komennolla <code>source venv/bin/activate</code>. Muuttuneesta komentokehoitteesta näkee että virtuaaliympäristö on aktiivinen.
+</p>
+
+<pre class="terminal">$ source venv/bin/activate
+(venv) ~/demo$
+</pre>
+
+<p>
+  Haluamme lisätä käyttöömme Flask-kirjaston. Tämä onnistuu kansiossa <code>bin</code> olevalla <code>pip</code>-kemonnolla.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ pip install Flask
+....
+....
+You are using pip version 8.1.1, however version 9.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Flask-kirjaston asentamisen yhteydessä saimme tiedon siitä, että käytössä oleva pip on vanhahko. Päivitetään se samalla.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ pip install --upgrade pip
+Collecting pip
+  Using cached pip-9.0.1-py2.py3-none-any.whl
+    Installing collected packages: pip
+Found existing installation: pip 8.1.1
+  Uninstalling pip-8.1.1:
+    Successfully uninstalled pip-8.1.1
+Successfully installed pip-9.0.1
+(venv) ~/demo$ ls venv
+bin  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+(venv) ~/demo$
+</pre>
+
+<p>
+  Käytössämme on nyt Flask, jonka lisäksi versionhallinnassa käytetyn pipin versiota on päivitetty.
+</p>
+
+
+<h2 class="material-heading">
+    Ensimmäinen Flask-sovellus
+
+</h2>
+
+<p>
+  <a href="http://flask.pocoo.org/" target="_blank" norel>Flask</a>-kirjaston etusivulla on seuraava lähdekoodi.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+</code></pre>
+
+<p>
+  Luodaan uusi tiedosto <code>hello.py</code> edellä luotuun demo-kansioomme ja kopioidaan esimerkkilähdekoodi tiedoston <code>hello.py</code> sisällöksi. Suoritetaan tämän jälkeen tiedoston <code>hello.py</code> lähdekoodi.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+(venv) ~/demo$ python3 hello.py
+(venv) ~/demo$
+</pre>
+
+<p>
+  Mitään ei tapahtunut. Huraa?
+</p>
+
+<p>
+  Flask-sovellusten käynnistäminen suoraan tiedostosta vaatii sovellukseen vielä ohjeistuksen komentoriviltä käynnistämiseen. Lisätään <code>hello.py</code>-tiedostoon vielä muutama rivi, jotka ohjeistavat sovelluksen käynnistämiseen kun se suoritetaan komentoriviltä.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+  
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+
+<p>
+  Kokeillaan sovelluksen käynnistämistä uudestaan.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+(venv) ~/demo$ python3 hello.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</pre>
+
+<p>
+  Sovellus on nyt käynnissä. Kun menemme selaimella osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
+</p>
+
+<img src="../img/helloworld-c36b779d.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Sovellus on käynnissä! Huomaamme, että komentoriville on ilmestynyt muutamia lisärivejä. Rivit kuvaavat ovat palvelinohjelmiston logirivejä ja ne kertovat palvelimelle tulleista pyynnöistä.
+</p>
+
+<p>
+  Palvelimelle on tullut oikeastaan kaksi pyyntöä, vaikka haimme sivua vain kerran. Ensimmäinen pyyntö <code>"GET / HTTP/1.1"</code> haki tietoa sovelluksen juuripolusta. Tämä on oikeastaan juuri se, mitä sovelluksemme metodi <code>hello()</code> käsittelee. Toinen pyyntö <code>"GET /favicon.ico HTTP/1.1"</code> haki sivulle ikonia -- palvelimelta ei tällaista löytynyt.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+demo$ python3 hello.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [29/Feb/2018 18:07:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Feb/2018 18:07:31] "GET /favicon.ico HTTP/1.1" 404 -
+</pre>
+
+<p>
+  Palvelimen sammuttaminen onnistuu komentoriviltä painamalla <code>CTRL+C</code>, eli näppäimiä <code>ctrl</code> ja <code>c</code> samanaikaisesti.
+</p>
+
+
+<h2 class="material-heading">
+    Debug-moodi
+
+</h2>
+
+<p>
+  Lähdekooditiedoston <code>hello.py</code> suorittaminen käynnistää palvelinohjelmiston.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+(venv) ~/demo$ python3 hello.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+</pre>
+
+<p>
+  Kun sovellus on käynnissä, muokkaukset tiedostoon <code>hello.py</code> eivät näy kun tietoa haetaan selaimella uudestaan. Ohjelmistokehityksen nopeuden kannalta olisi kuitenkin hyödyllistä, jos muutoksia voisi tarkastella ilman että palvelinta käynnistellään jatkuvasti uudelleen.
+</p>
+
+<p>
+  Flaskille voi määritellä ns. debug-moodin, mikä muuntaa sovelluksen toimintaa muunmuassa siten, että sovelluksen uudelleenkäynnistäminen muutosten yhteydessä ei ole tarpeellista. Muokataan sovelluksen käynnistävää tiedostoa <code>hello.py</code> siten, että komento <code>app.run()</code> saa parametrinaan tiedon debug-tilasta. Tämä onnistuu seuraavasti.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+  
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Kun sovelluksen sammuttaa ja käynnistää uudelleen, selaimella sivu näyttää yhä seuraavalta.
+</p>
+
+<img src="../img/helloworld-c36b779d.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Terminaalissa tosin tulostus on hieman erilainen.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+(venv) ~/demo$ python3 hello.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 231-450-049
+</pre>
+
+<p>
+  Muokataan tiedostoa <code>hello.py</code> siten, että sivun pitäisi näyttää teksti "Hei maailma!".
+</p>
+
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask
+app = Flask(__name__)
+  
+@app.route("/")
+def hello():
+    return "Hei maailma!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Kun tallennamme tiedoston, huomaamme, että terminaalissa näkyvä tulostus päivittyy.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
+(venv) ~/demo$ bin/python3 hello.py
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 231-450-049
+* Detected change in '/polku/demo/hello.py', reloading
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 231-450-049
+</pre>
+
+<p>
+  Kun sivun lataa selaimessa uudestaan, sivulla näkyy nyt päivitetty teksti. 
+</p>
+
+<img src="../img/heimaailma-7a86e830.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Debug-tilasta on muitakin hyötyjä. Pääset esimerkiksi tarkastelemaan selaimesta sovelluksen tilaa virhetilanteen yhteydessä. Tämän takia on myös hyvä varmistaa, ettei debug-tila ole koskaan päällä kun sovellus viedään tuotantoon -- debug-tila mahdollistaa myös mm. tietokannan salasanojen ym tarkastelun. Ei hyvä asia tuotannossa.
+</p>
+
+
+<h2 class="material-heading">
+    HTML-näkymien luominen
+
+</h2>
+
+<p>
+  Tutustutaan seuraavaksi HTML-kielellä toteutettavien näkymien luomiseen. Mikäli HTML-kieli ei ole tuttu, käy läpi ainakin osoitteessa <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" norel>https://developer.mozilla.org/en-US/docs/Learn/HTML</a> oleva opas.
+</p>
+
+<p>
+  Jatketaan aiemmin luodun sovelluksen parissa.
+</p>
+
+<pre class="terminal">demo$ ls
+bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+</pre>
+
+<p>
+  Luodaan HTML-näkymiä varten kansio nimeltä <code>templates</code> ja mennään kansioon.
+</p>
+
+<pre class="terminal">demo$ mkdir templates
+demo$ cd templates
+demo/templates$ ls
+demo/templates$
+</pre>
+
+<p>
+  Kansio on toistaiseksi tyhjä. Luodaan kansioon kaksi tiedostoa <code>layout.html</code> ja <code>index.html</code>. Tiedostoon <code>layout.html</code> tulee sivun yleinen rakenne, menuvalikko ym. Tiedostoon <code>index.html</code> taas sivun etusivun sisältö.
+</p>
+
+<p>
+  Asetetaan sivun <code>layout.html</code> sisällöksi seuraava.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;Demo&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+      {% block body %}
+      &lt;p&gt;
+	Tähän tuodaan sisältö muualta.
+      &lt;/p&gt;
+      {% endblock %}
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+<p>
+  Ja sivun <code>index.html</code> sisällöksi seuraava.
+</p>
+
+<pre class="sh_xml code-highlight"><code>{% extends "layout.html" %}
+
+{% block body %}
+&lt;p&gt;
+  Hei maailma!
+&lt;/p&gt;
+{% endblock %}
+</code></pre>
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Jinja 2
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Flask käyttää oletuksena <a href="http://jinja.pocoo.org/docs/2.10/">Jinja</a>-nimistä kirjastoa käyttäjälle näytettävien sivujen luomiseen. Jinja on hieman tietokantojen perusteista tutun Thymeleafin kaltainen kirjasto, jota käytetään HTML-sivujen luomiseen. Jinja mahdollistaa myös esimerkiksi toistolauseiden ym. käyttämisen osana HTML-näkymiä -- sivut luodaan palvelimella.
+  </p>
+  
+
+  </div>
+</div>
+
+<p>
+  Nyt sovelluksemme kansion <code>templates</code> sisällön pitäisi olla seuraavanlainen.
+</p>
+
+<pre class="terminal">demo/templates$ ls
+index.html  layout.html
+demo/templates$
+</pre>
+
+<p>
+  Palataan tiedostohierarkiassa aiempaan kansioon.
+</p>
+
+<pre class="terminal">demo/templates$ ls
+index.html  layout.html
+demo/templates$ cd ..
+demo$
+</pre>
+
+<p>
+  Muokataan kansiossa olevaa <code>hello.py</code>-tiedostoa. Emme näytäkään käyttäjälle suoraan merkkijonoa <code>Hei maailma!</code>, vaan luomme käyttäjälle näkymän juuri luomiemme tiedostojen pohjalta.
+</p>
+
+<p>
+  Tarvitsemme sovelluksen käyttöön Flaskin <code>render_template</code>-funktion. Funktio lisätään sekä tiedoston alussa olevaan import-lauseeseen, että pyynnön käsittelevään funktioon <code>hello</code>, jossa kyseistä funktiota kutsutaan. Funktiolle <code>render_template</code> annetaan kutsuttaessa parametrina HTML-tiedoston nimi, josta käyttäjälle palautettava sivu luodaan.
+</p>
+
+<pre class="sh_python code-highlight"><code>from flask import Flask, render_template
+app = Flask(__name__)
+  
+@app.route("/")
+def hello():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Käynnistetään sovellus.
+</p>
+
+<pre class="terminal">demo$ ls
+bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share  templates
+demo$ bin/python3 hello.py 
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 231-450-049
+</pre>
+
+<p>
+  Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
+</p>
+
+<img src="../img/heimaailma-template-1581af2b.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Nopealla vilkaisulla mikään ei ole muuttunut. Kun tarkastelemme sivuun liittyvää lähdekoodia, huomaamme kuitenkin selkeitä muutoksia. Lähdekoodin tarkastelu onnistuu selaimessa klikkaamalla sivua oikealla hiirennäppäimellä ja valitsemalla <code>View page source</code> (pikanäppäin <code>Ctrl+S</code>).
+</p>
+
+<p>
+  Lähdekoodi paljastaa totuuden. Näyttää siltä, että sivun lähdekoodin runko on tullut <code>templates</code>-kansion tiedostosta <code>layout.html</code> ja sisältö tiedostosta <code>index.html</code>. 
+</p>
+
+<img src="../img/heimaailma-template-source-caf3263e.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Voimme siis määritellä sivustolle ulkoasun tiedostossa <code>layout.html</code>. Sivukohtainen sisältö määritellään taas sivukohtaisessa tiedostossa -- esimerkiksi juurisivun sisältö löytyy tiedostosta <code>index.html</code>.
+</p>
+
+
+<h2 class="material-heading">
+    Tiedon lisääminen näkymään
+
+</h2>
+
+<p>
+  Funktiolle <code>render_template</code> voidaan antaa parametreina muuttujia, joiden arvoja voidaan lisätä näkymiin. Tarkastellaan tässä muuttujien, listojen sekä olioita sisältävien listojen käsittelyä.
+</p>
+
+<p>
+  Näkymien luomiseen käytettävä Jinja-kirjasto etsii HTML-koodista kaksinkertaisilla aaltosuluilla rajattuja alueita sekä niiden sisällä olevaa koodia. Mikäli aaltosulkujen sisältä löytyy <code>render_template</code>-funktiolle parametrina annetun muuttujan nimi, aaltosulkujen paikalle vaihdetaan muuttujan arvo.
+</p>
+
+<p>
+  Kontrollirakenteita kuten <code>if</code> ja <code>for</code> voi käyttää Jinjassa yksinkertaisten aaltosulkujen avulla siten, että avaavaa aaltosulkua seuraa prosenttimerkki, ja lopettavaa aaltosulkua edeltää prosenttimerkki. Esimerkiksi <code>{% for arvo in lista %}{{ arvo }}{% endfor %}</code> kävisi jokaisen listalla olevan arvon läpi ja lisäisi sen sivulle.
+</p>
+
+<p>
+  Luodaan kansioon <code>templates</code> tiedosto <code>demo.html</code>, jonka avulla demonstroidaan useampaa tapaa muuttujien käyttöön. Asetetaan tiedoston sisällöksi seuraava.
+</p>
+
+<pre class="sh_xml code-highlight"><code>  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;p&gt;
+    Hei maailma!
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;!-- etsitään muuttujaa nimeltä nimi ja asetetaan sen arvo tähän --&gt;
+    {{ nimi }}
+  &lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;!-- Yritetään käydä lista-nimistä tietorakennetta läpi.
+	 Jokaiselle tietorakenteen alkiolle luodaan li-elementti, 
+	 jonka sisälle asetetaan alkion arvo. --&gt;
+    {% for arvo in lista %}
+    &lt;li&gt;{{ arvo }}&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nimi&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;!-- Yritetään käydä tietorakenne nimeltä esineet läpi. 
+	 Jokaiselle esineelle luodaan oma rivi taulukkoon. 
+	 Jokaista taulukon solua luodessa oletetaan, että 
+	 esine on olio, ja että alkiolla on muuttuja name. 
+	 Muuttujan arvo asetetaan solun arvoksi. --&gt;
+    {% for esine in esineet %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ esine.name }}&lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/table&gt;
+
+  {% endblock %}
+</code></pre>
+
+<p>
+  Edellä oletetaan, että käytössä on kolme muuttujaa: <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Tämän lisäksi jokaisella esineellä tulee olla muuttuja <code>name</code>.
+</p>
+
+<p>
+  Muokataan taas tiedostoa <code>hello.py</code>. Luodaan tiedostoon esinettä kuvaava luokka <code>Item</code>, jolla on oliomuuttuja <code>name</code>. Luodaan tiedostoon myös muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code> ja asetetaan näihin esimerkkiä varten arvot.
+</p>
+
+<p>
+  Luodaan lopulta erillinen funktio, joka kuuntelee polkuun <code>/demo</code> tehtäviä pyyntöjä. Kun pyyntö vastaanotetaan, käyttäjälle palautetaan funktion <code>render_template</code> luoma sivua kuvaava merkkijono. Funktiolle <code>render_template</code> annetaan parametrina aiemmin luotua demosivua kuvaava <code>demo.html</code> sekä muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Jokaiselle muuttujalle asetetaan myös nimi kutsun funktiokutsun yhteydessä.
+</p>
+
+
+<pre class="sh_python code-highlight"><code>from flask import Flask, render_template
+app = Flask(__name__)
+
+class Item:
+    def __init__(self, name):
+        self.name = name
+
+nimi = "Essi Esimerkki"
+
+lista = [1, 1, 2, 3, 5, 8, 11]
+
+esineet = []
+esineet.append(Item("Eka"));
+esineet.append(Item("Toka"));
+esineet.append(Item("Kolmas"));
+esineet.append(Item("Neljäs"));
+  
+@app.route("/")
+def hello():
+    return render_template("index.html")
+
+@app.route("/demo")
+def content():
+    return render_template("demo.html", nimi=nimi, lista=lista, esineet=esineet)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+
+<p>
+  Mikäli sovellus ei ole käynnissä, käynnistetään se.
+</p>
+
+<pre class="sh_python code-highlight"><code>demo$ bin/python3 hello.py 
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
+* Debugger is active!
+* Debugger PIN: 231-450-049
+</code></pre>
+
+<p>
+  Osoitteessa <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a> on tuttu sivu, joka näyttää viestin "Hei maailma!". Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/demo" target="_blank" norel>http://127.0.0.1:5000/demo</a>, pyyntö ohjautuu <code>hello.py</code>-tiedoston funktiolle nimeltä <code>content</code>. Näemme lopulta seuraavanlaisen sivun.
+</p>
+
+
+<img src="../img/heimaailma-template-source-caf3263e.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<h1 class="material-heading">
+    Aiheen valinta
+
+</h1>
+
+<h2 class="material-heading">
+    Työ omasta aiheesta
+
+</h2>
+
+<p>
+  Mikäli haluat tehdä työn omasta aiheesta ja työ täyttää harjoitustyön vaatimukset (tietokanta jossa noin 4-7 taulua, käyttöliittymä, järkevä maksimiarvosana), voit toteuttaa työn omalla aiheellasi. Omasta aiheesta täytyy laatia aihekuvaus valmiiden aiheiden tapaan, joka tulee palauttaa ensimmäisen viikon palautuksen yhteydessä. Voit myös toteuttaa valmiista aihe-ehdotuksesta oman variaatiosi.
+</p>
+
+<p>
+  Hyviä aiheideoita voit saada vaikkapa omista harrasteista ja kiinnostuksen kohteista. Kurssilla on vuosien saatossa toteutettu mm. kaikennäköisiä roolipelitietokantoja, lintutietokanta, bussinbongaustietokanta ja haalarimerkkigalleria.
+</p>
+
+<p>
+  Omasta aiheesta on sovittava ohjaajan kanssa. Täten varmistetaan aiheen sopiva laajuus, työ ei saa olla liian suppea, mutta se ei myöskään saa olla liian laaja. Mikäli haluat tehdä työn omasta aiheesta, ota aiheesi mielellään jo aloitusluennon jälkeen.
+</p>
+
+
+<h2 class="material-heading">
+     Valmiita aiheaihioita
+
+</h2>
+
+<p>
+  Alla on poimittuna osoitteesta <a href="http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/index.html" target="_blank" norel>http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/index.html</a> muutamia mahdollisia työaiheita. Sivulta aiheita löytyy enemmänkin -- huomaa, että em. sivulla olevat arvosanaehdotukset eivät aina pidä paikkansa.
+</p>
+
+
+<h3 class="material-heading">
+    Kevyempiä aiheita - maksimiarvosana noin 3
+
+</h3>
+
+<strong>Kurssitarjonta ja kurssipaikan varaus</strong>
+
+<p>
+  Kurssikeskus Opinahjo järjestää maksullisia kursseja eri aihepiireistä. Yhteen aihepiiriin liittyen pidetään vuodessa 1-20 kurssia. Sama kurssin voidaan vuoden aikana järjestää useaan kertaan. Kursseille voi osallistua keskimäärin 20 opiskelijaa, mutta isoja yli sadankin hengen kursseja on joskus ohjelmassa. Kustakin kurssista on laadittu esite, josta käyvät selville kurssin aika, kurssipaikka kurssin opettajat ja kurssin sisältö.
+</p>
+
+<p>
+  Kuka tahansa voi tutkia kurssitietoja ja ilmoittautua kurssille. Jotta ilmoittautuminen tulisi voimaan, on varaajan maksettava varausmaksu. Tätä varten varaajalle ilmoitetaan tilinumero ja varaukseen liittyvä viitenumero ja varausmaksun määrä. Jos varaaja erikseen pyytää laskua varausmaksusta, sellainen lähetetään. Varsinainen kurssimaksun laskutus ei kuulu tämän järjestelmän piiriin.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kurssin syöttö ja muokkaus</li>
+  <li>Kurssitarjonnan katselu ja varauksen teko</li>
+  <li>Varauslaskujen kirjoitus - niille jotka ovat sitä pyytäneet tai eivät ole viikon kuluessa vauksesta maksaneet varausmaksua. (valinnainen)</li>
+  <li>Ilmoittautuneiden luettelo</li>
+  <li>Varauksen peruutus yrityksen toimesta, jos maksua ei ole maksettu</li>
+  <li>Varauksen peruutus asiakkaan toimesta</li>
+  <li>Kurssin peruutus</li>
+</ul>
+
+
+
+
+<strong>Projektin työaikaseuranta</strong>
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan seurata projektiin käytettyä työaikaa. Järjestelmää on tarkoitus käyttää ohjelmistotuotantoprojekteissa sekä harjoitustöissä. Projektipäällikkö tai ohjaaja saa järjestelmältä yhteenvetoja käytetystä työajasta viikottain, henkilöittäin ja tehtävälajeittain. Kukin projektiin osallistuva henkilö kirjaa järjestelmän tekemänsä työtunnit, työlajin ja mahdollisen selityksen. Projektin osallistuja saa nähtäväkseen tekemänsä kirjaukset. Hän saa esiin myös itseensä liittyvät yhteenvetoraportit. Projektipäällikkö saa halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisista kirjauksista.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Työaikakirjauksen teko</li>
+  <li>Projektin perustaminen</li>
+  <li>Henkilön liittäminen projektiin</li>
+  <li>Henkilön poistaminen projektista</li>
+  <li>Projektipäällikön raportit</li>
+  <li>Yksityiskohtainen työraportti</li>
+</ul>
+
+
+
+<h3 class="material-heading">
+    Haastavampia aiheita - maksimiarvosana noin 5
+
+</h3>
+
+
+
+<strong>Keskustelufoorumi</strong>
+
+<p>
+  Harjoitustyössä tehdään keskustelufoorumi jonkin yhteisön, vaikkpa opiskelijajärjestön sisäiseen käyttöön. Käyttäjä voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai artikkelin iän perusteella. Lukija voi seurata myös vastinepolkua. Oletusarvoisesti lukijalle näytetään kaikki tietty ikää tuoreemmat artikkelit varustettuna informaatiolla siitä onko lukija itse ja ovatko kaikki yhteisön jäsenet jo lukeneet artikkelin. Lukija identifioi aina itsensä ja artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tieto on kaikkien lukijoiden saatavissa.
+</p>
+
+<p>
+  Järjestelmän ylläpitäjällä on oma liittymä, jonka kautta hän ylläpitää järjestön käyttäjien jäsentietoja ja heidän kuulumistan eri ryhmiin, siivota kirjoituskantaa ja määrittellä aiheita, joiden perusteella kirjoituksia voi ryhmitellä.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>  
+  <li>Kirjautuminen</li>
+  <li>Kirjoituksen lisääminen</li>
+  <li>Kirjoitusten näyttäminen eri kriteerein</li>
+  <li>Ryhmän jäsenen lisääminen, muokkaaminen ja poistaminen</li>
+  <li>Vastineen laatiminen ja muokkaus</li>
+  <li>Kirjoitusten poistaminen</li>
+  <li>Aiheiden määrittely, muokkaus ja poisto</li>
+</ul>
+
+
+<strong>Lääkäriaseman työvuorolista</strong>
+
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan laatia lääkäriaseman työvuorolistoja. Lääkäriaseman henkilöstö jaetaan kolmeen luokkaan: lääkärit, sairaanhoitajat ja perushoitajat. Myös aseman aukioloajat jaetaan tarvittavan henkilöstövahvuuden mukaan eri kiireellisyysluokkiin. Jokaiselle kiireellisyysluokalle määritellään minimivahvuus eli kuinka monta kunkin henkilöstöluokan työntekijää täytyy olla töissä. Kuitenkin laskettessa minimivahvuutta ylempi voi korvata alemman eli lääkäri voi olla sairaanhoitaja tai perushoitaja, ja sairaanhoitaja voi olla myös perushoitaja. Jokainen aseman aukiolotunti kuuluu johonkin kiireellisyysluokkaan.
+</p>
+
+<p>
+  Huom. järjestelmä saa hyväksyä vain sellaiset tyvuorolistat, jotka täyttävät vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijääällä on määritelty päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kiireellisyysluokkien teko (ja muutos)</li>
+  <li>Henkilöstövahvuuskalenterin teko (ja muutos)</li>
+  <li>Työvuorolistan teko (ja muutos)</li>
+  <li>Henkilöökohtaisen työvuorolistan listaus</li>
+  <li>Työvuorolistan listaus</li>
+  <li>Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)</li>
+  <li>Työntekijään tekemien tuntien listaus kiireellisyysluokittain</li>
+  <li>Työvuorolistan ylimiehityksen raportointi</li>
+</ul>
+
+
+<h2 class="material-heading">
+    Kun olet valinnut aiheen..
+
+</h2>
+
+<p>
+  Kun olet valinnut aiheen, kirjoita siitä kuvaus tai mukauta aiheen kuvausta itsellesi sopivaksi.
+</p>
+
+<p>
+  Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen.
+</p>
+
+<p>
+  Kun olet tehnyt repositorion sekä luonut aihekuvauksen, lisää aihe labtooliin. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
+</p>
+
+        </div>
+      </div>
+
+      <div class="footer-wrapper">
+        <footer class="footer">
+  <div>
+    Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä
+  </div>
+  <div>
+    Kurssin on tehnyt Helsingin Yliopiston Agile Education Research -tutkimusryhmä.
+  </div>
+  <div class="improvement">
+    <a href="https://github.com/materiaalit/tsoha-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
+</a>
+<a href="https://github.com/materiaalit/tsoha-18/edit/master/source/viikko1.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+  <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
+</a>
+     <a href="https://github.com/materiaalit/tsoha-18" class="footer__github-link" target="_blank" rel="noopener">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="tmc-login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form id="tmc-login-form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kirjaudu TMC-käyttäjällesi</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Puuttuuko sinulta TMC-käyttäjätunnus? <a href="https://tmc.mooc.fi/user/new" class="alert-link" target="_blank" rel="noopener">Rekisteröidy</a>
+          </div>
+
+          <div class="alert alert-danger" id="tmc-login-error" style="display: none;"></div>
+
+          <div class="form-group">
+            <label>Käyttäjätunnus</label>
+            <input type="text" id="tmc-login-username" class="form-control" placeholder="Käyttäjätunnus"/>
+          </div>
+
+          <div class="form-group">
+            <label>Salasana</label>
+            <input type="password" id="tmc-login-password" class="form-control" placeholder="Salasana"/>
+          </div>
+
+          <div class="form-group">
+            <label>Kurssi</label>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohpe-k18">
+                Ohjelmoinnin perusteet, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="hy-ohja-k18">
+                Ohjelmoinnin jatkokurssi, kevät 2018 (Helsingin yliopisto)
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018">
+                Ohjelmoinnin MOOC 2018
+              </label>
+            </div>
+
+	    <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="tmcLoginCourse" value="mooc-ohjelmointi-2018-nodl">
+                Ohjelmoinnin MOOC 2018 (aikarajaton)
+              </label>
+            </div>
+
+            <small class="form-text text-muted">
+              Kurssin valinnalla on pieniä vaikutuksia materiaalin tiettyihin osiin.
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-secondary" data-dismiss="modal">Sulje</a>
+          <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    <div class="table-of-contents-layer" id="table-of-contents-layer">
+</div>
+
+<div class="table-of-contents" id="table-of-contents">
+  <h1 class="table-of-contents__heading">
+    Sisällysluettelo
+  </h1>
+
+  <div class="table-of-contents__content">
+    <ul id="table-of-contents-list"></ul>
+  </div>
+</div>
+
+
+    <script>
+  window._QUIZNATOR_ENABLED = true;
+</script>
+
+<script src="https://quiznator.herokuapp.com/javascripts/plugin-loader.min.js"></script>
+
+
+    <script>
+  window._STUDENT_DASHBOARD_ENABLED = true;
+</script>
+<script src="https://student-dashboard.testmycode.io/plugin-loader/script.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+	    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script>
+      window.SD_SHOW_SURVEY = ['part6', 'part7'].indexOf(window.location.pathname.replace(/\//g,'')) >= 0;
+    </script>
+
+    <script src="../javascripts/scripts-802ce333.js"></script>
+
+    <script src="https://use.fontawesome.com/ed2f73836b.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js'></script>
+
+    <script>window.cookieconsent.initialise({"palette":{"popup":{"background":"#000"},"button":{"background":"#f1d600"}}, "position": "bottom-left"});</script>
+
+    <script src='https://materiaalit.github.io/code-states-visualizer-cdn/app.js'></script>
+    <script src='https://materiaalit.github.io/typonator-cdn/app.js'></script>
+    <script src='https://crowdsorcerer.testmycode.io/dist/app.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+//        window.initCodeStatesVisualizer();
+//        window.initTyponator();
+//        window.initCrowdsorcerer();
+      });
+    </script>
+  </body>
+</html>
