@@ -1,0 +1,391 @@
+---
+  title: Johdanto
+---
+
+<% partial 'partials/material_heading' do %>
+  Yleistä
+<% end %>
+
+<p>
+  Tämä materiaali on tarkoitettu Helsingin yliopiston harjoitustyökurssin Tietokantasovellus (5 op) materiaaliksi. Kurssin tietokantasovellus esitietovaatimuksena ovat kurssit Ohjelmoinnin perusteet (TKT-10002), Ohjelmoinnin jatkokurssi (TKT-10003), ja Tietokantojen perusteet (TKT-10004). 
+</p>
+
+<p>
+  Kurssi olettaa merkittävää panostusta omatoimiseen lisätiedon etsimiseen, eikä materiaali kata läheskään kaikkea kurssin kannalta oleellista. 
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Harjoitustyön eteneminen ja aikataulu
+<% end %>
+
+<table class="table">
+
+  <tr>
+    <td>
+      Viikko
+    </td>
+    <td>
+      Eteneminen
+    </td>
+  </tr>
+  <tr>
+    <td>
+      1
+    </td>
+    <td>
+      
+      <ul>
+	<li>Pythonin perusteet</li>
+	<li>Web-sovellusten toimintaperiaatteet</li>
+	<li>Flask-kirjaston perustoiminnallisuus</li>
+	<li>Aiheen valinta</li>
+      </ul>
+      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      2
+    </td>
+    <td>
+
+      <ul>
+	<li>Rekisteröityminen ja autentikaatio</li>
+      </ul>
+      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      3
+    </td>
+    <td>
+
+      <ul>
+	<li>Toinen tietokohde</li>
+	<li>Täysi CRUD-toiminnallisuus</li>
+	<li>Käytettävyys</li>
+	<li>Ainakin yksi listanäkymä</li>
+	<li>Sivustolla navbar (tai vastaava) valikko, josta pääsee sivuston osiin käsiksi</li>
+      </ul>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      4
+    </td>
+    <td>
+      
+      <ul>
+	<li>Lisää tietokohteita</li>
+	<li>Ainakin yksi monimutkaisempi yhteenvetokysely sekä sen tulosten näyttäminen</li>
+	<li>Toiminnallisuuden täydentäminen</li>
+      </ul>
+      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      5
+    </td>
+    <td>
+      
+      <ul>
+	<li>Syötteiden validoinnit</li>
+	<li>Toiminnallisuuden täydentäminen</li>
+      </ul>
+      
+    </td>
+  </tr>
+  <tr>
+    <td>
+      6
+    </td>
+    <td>
+
+      <ul>
+	<li>Ulkoasun, käytettävyyden ja toiminnallisuuden viilausta</li>
+	<li>Autorisointi</li>
+      </ul>
+    
+    </td>
+  </tr>
+  <tr>
+    <td>
+      7
+    </td>
+    <td>
+      
+      <ul>
+	<li>Viimeiset viilaukset</li>
+	<li>Loppupalautus</li>
+	<li>Demo</li>
+      </ul>
+    
+    </td>
+  </tr>
+
+</table>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Tukiväylät
+<% end %>
+
+<p>
+  Kurssilla on viikoittaista pajaa Exactumin salissa XXX seuraavina aikoina. 
+</p>
+
+
+<table class="table">
+  <tr>
+    <th>
+      Päivä
+    </th>
+    <th>
+      Kellonajat
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Maanantai
+    </td>
+    <td>
+      12-18
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Torstai
+    </td>
+    <td>
+      12-18
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Perjantai
+    </td>
+    <td>
+      10-16
+    </td>
+  </tr>
+</table>
+
+<p>
+  Sähköpostitse tapahtuvaa ohjausta ei kurssilla ole. Kumpulan Exactumin mikroluokissa (BK107, B221) saa työskennellä myös ohjausaikojen ulkopuolella, jos siellä ei ole tuolloin muuta toimintaa.
+</p>
+
+<p>
+  Verkon yli nopein tapa avun kysymiseen on kurssin keskustelukanava <code>#tsoha</code>, johon pääsee helpointen kanavan Matrix-huoneen kautta: <a href="https://riot.im/app/#/room/#tsoha:matrix.org"  target="_blank" rel="noopener">https://riot.im/app/#/room/#tsoha:matrix.org</a>. Kanavan muut osallistujat ovat vapaaehtoisia kurssin kanssaopiskelijoita. 
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Yhteistyö
+<% end %>
+
+<p>
+  Hyvä yhteistyö keskittyy jokaisen osapuolen oppimiseen ja parantaa oppimistuloksia. Jos teet harjoitustyötä yhdessä muiden kanssa, sinun tulee kuitenkin myös tehdä ja palauttaa oma työ.
+</p>
+
+<p>
+  Hyvä ohjesääntö yhteistyöhön on ns. <a href="http://courses.cs.washington.edu/courses/cse100/99au/syllabus.htm#OTHER" target="_blank" rel="noopener">Gilligan's Island -sääntö</a>:
+</p>
+
+<p>
+  <em>
+
+    <strong>The Gilligan's Island Rule</strong>: You are free to meet with fellow students(s) and discuss an assignment with them. Writing on a board or shared piece of paper during the meeting is acceptable; however, you should not take any written (electronic or otherwise) record away from the meeting. Everything that you derive from the collaboration should be in your head. After the meeting, engage in at least a half-hour of mind-numbing activity (like watching an episode of Gilligan's Island), before starting to work on the assignment. This will assure that you are able to reconstruct what you learned from the meeting by yourself.
+
+  </em>
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Opintovilpistä
+<% end %>
+
+<p>
+  Kurssilla seurataan Helsingin yliopiston opintokäytäntöjä. Plagiarismi ja opintovilppi, eli esimerkiksi netissä olevien tai kaverilta saatujen vastausten kopiointi ja niiden palauttaminen omana työnä on kiellettyä.
+</p>
+
+<p>
+  Todettu opintovilppi johtaa kurssisuorituksen hylkäämiseen ja toistuva opintovilppi voi johtaa opinto-oikeuden määräaikaiseen menettämiseen.  Lue lisää osoitteesta <a href="http://blogs.helsinki.fi/alakopsaa/opiskelijalle/"  target="_blank" >http://blogs.helsinki.fi/alakopsaa/opiskelijalle/</a>.
+</p>
+
+<%= partial 'partials/quiz', locals: { id: '587bc5f11b527d0004a7971c' } %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Arvostelu
+<% end %>
+
+<p>
+  Harjoitustyön arvostelu perustuu dokumentaatioon, prosessiin sekä lopullisen sovelluksen toimintaan.
+</p>
+
+<p>
+  <strong>Dokumentaatio ja "järkevyys" 30%</strong>
+</p>
+
+<ul>
+  <li>
+    Dokumentaation yleinen sisältö 10%: aiheen kuvaus, sovelluksen käyttöohje, sovelluksen asennusohje, työn ja sovelluksen rajoitteet, työn puuttuvat ominaisuudet, dokumentaation vastaavuus toteutettuun työhön, omat kokemukset.
+  </li>
+  <li>
+    Tietokantarakenteen kuvaus 10%: täyttää kurssin tavoitteet ja sovelltuu hyvin tarkoitukseensa, tietokantataulujen normalisointi sekä tarvittaessa perustelu normalisoinnin puutteille, tietokantakaavion sisällyttäminen dokumentaatioon, tietokantakaavion ja todellisen tietokannan vastaavuus, dokumentaatiossa CREATE TABLE -lauseet sekä indeksien lisäykset, valittu tietokannanhallintajärjestelmä toimiva ja ongelma-alueeseen sopiva (ei esim SQLiteä Herokussa).
+  </li>
+  <li>
+    Käyttötapaukset / user storyt ja niihin liittyvät SQL-kyselyt 10%: dokumentaatiossa listattuna oleellisimmat käyttäjäryhmät sekä käyttötapaukset (tai user storyt). Käyttötapausten yhteydessä kuvattuna toimivat ja järkevät SQL-kyselyt.
+  </li>
+</ul>
+
+<p>
+  <strong>Prosessi 30%</strong>
+</p>
+
+<ul>
+  <li>
+    Aikataulutus 20%: viikoittaisten palautusten tekeminen ajoissa, oma harjoitustyöhön liittyvä ajanhallinta.
+  </li>
+  <li>
+    Vertaistoiminta 7%: vertaisarviointien ja koodikatselmointien tekeminen kurssin annetussa aikataulussa.
+  </li>
+  <li>
+    Demotilaisuuteen osallistuminen 3%</strong>
+  </li>
+</ul>
+
+<p>
+  <strong>Sovellus 40%</strong>
+</p>
+
+<ul>
+  <li>
+    Käytettävyys 10%: sovellus on käytettävä, opittava, muistattava ja käyttäjän näkökulmasta tehokas. Sovelluksen tarjoamat sivut ovat loogisesti rakennettu ja sivut ovat helposti löydettävissä (etusivu sovelluksen juuressa, järkevä yleisvälikko). Käyttäjän syötteet validoidaan. Mahdolliset virhetilanteet tuottavat ymmärrettäviä virheviestejä. Sovellus on käytettää myös laajemmilla tietomäärillä (sivutus, tiedon hakeminen).
+  </li>
+  <li>
+    Tietokanta ja tietokannan yhteentoimivuus sovelluksen kanssa 20%: Ohjelmassa ei SQL-injektiomahdollisuuksia, isoksi kasvavissa listauksissa sivutus, käyttäjien syötteet validoidaan (myös) palvelimella, indeksien käyttö, SQL-virheiden käsittely, kyselyiden toteuttaminen tehokkaasti (yhdellä kyselyllä toteutettavissa olevat asiat tehdään yhdellä kyselyllä useamman sijaan), sovelluksissa käytössä ja toteutettuna monimutkaisempia yhteenvetokyselyitä.
+  </li>
+  <li>
+    Ylläpidettävyys 10%: Konfiguraatiot sekä paikalliselle kehitysympäristölle että tuotantoympäristölle. Sovellus ei sisällä tuotantoympäristön salasanoja tms. Koodin laatu ok (ei copy-paste koodia, ei pois-kommentoitua koodia jne), sovellus pilkottu selkeitä vastuualueita hoitaviin luokkiin. Sovelluksen koodi on ymmärrettävää, löydettävissä ja tarpeelliset kohdat kommentoitu. Kurssiin syventynyt kurssilainen tai kurssilaisryhmä ymmärtää ohjelman rakenteen ja tavoitteet ohjelmakoodista.
+  </li>
+</ul>
+
+<p>
+  Arvosanarajat:
+</p>
+
+<table class="table">
+
+  <tr>
+    <th>
+      Pisteet
+    </th>
+    <th>
+      Arvosana
+    </th>
+  </tr>
+
+  <tr>
+    <td>
+      91% tai yli
+    </td>
+    <td>
+      5/5
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      86%-90%
+    </td>
+    <td>
+      4/5
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      81%-85%
+    </td>
+    <td>
+      3/5
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      76%-80%
+    </td>
+    <td>
+      2/5
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      70%-75%
+    </td>
+    <td>
+      1/5
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      &lt; 70%
+    </td>
+    <td>
+      hylätty
+    </td>
+  </tr>
+</table>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Harjoitustyön keskeyttäminen
+<% end %>
+
+<p>
+  Harjoitustyöhön saa osallistua vain kerran. Harjoitustyön keskeyttäminen tarkoittaa sitä, että harjoitustyöhön ei voi enää osallistua jatkossa.
+</p>
+
+<p>
+  Mikäli olet osallistunut harjoitustyöhön ja keskeyttänyt sen tai saanut harjoitustyöstä hylätyn arvosanan, harjoitustyön jatkotyöstäminen tapahtuu yksilötyönä. Kun saat aiemmin keskeytyneen työsi valmiiksi, palauta se kurssin vastuuhenkilölle Arto Hellakselle (arto.hellas@cs.helsinki.fi).
+</p>
+
+<p>
+  Keskeytyneet tai hylätyt harjoitustyöt arvostellaan erikseen. Keskeytyneen harjoitustyön arvostelussa huomioidaan alkuperäisen harjoitustyön prosessin epäonnistuminen.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Sitten materiaaliin...' } do %>
+
+  <p>
+    Löydät tämän sivun ylälaidasta linkin "Osa 1", jolla pääset ensimmäiseen osaan käsiksi. Siirtyminen onnistuu myös <%= link_to 'tästä', 'part1.html'%> painamalla.
+  </p>
+
+<% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Kurssimateriaalin tekijät ja lisenssi
+<% end %>
+
+<p>
+  Kurssimateriaalin on tehnyt Arto Hellas. Muita tekijöitä löytyy kurssimateriaalin Github-reposta. 
+</p>
+
+<p>
+  Tämä materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssillä, joten voit käyttää ja levittää sitä vapaasti, kunhan alkuperäisten tekijöiden nimiä ei poisteta. Jos teet muutoksia materiaaliin ja haluat levittää muunneltua versiota, se täytyy lisensoida samalla lisenssillä. Materiaalien käyttö kaupalliseen tarkoitukseen on ilman erillistä lupaa kielletty.
+</p>
+
+<p>
+  Voit osallistua kurssimateriaalin parantamiseen. Jokaisen sivun alalaidassa on linkit, joilla pääset ehdottamaan muutoksia. Muutosten ehdottaminen vaatii <a href="https://github.com/" target="_blank">Github</a>-tunnuksen.
+</p>

@@ -1,0 +1,977 @@
+---
+  title: Python-alkeet 
+  exercise_page: false
+  quiz_page: false
+  published: true
+---
+
+
+<% partial 'partials/material_heading' do %>
+  Python-kielen alkeet
+<% end %>
+
+<p>
+  Tässä esitellään lyhyesti Python-kielen perusteet. Oletuksena on, että lukija on käynyt Helsingin yliopiston kurssit Ohjelmoinnin perusteet (TKT-10002) ja Ohjelmoinnin jatkokurssi (TKT-10003).
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Python-ohjelman suorittaminen
+<% end %>
+
+<p>
+  Mikäli et ole asentanut vielä harjoitustyössä tarvittavia työvälineitä, tee se nyt. Ohjeet löytyvät yläpalkin valikosta kohdasta <a href="tyovalineet/" norel>Kurssin työvälineet</a>.
+</p>
+
+<p>
+  Python-ohjelmia voidaan suorittaa usealla eri tavalla. Kokeilut tehdään tyypillisesti Python-tulkissa, josta lähdekoodia kopioidaan tarvittaessa erillisiin lähdekooditiedostoihin. Python-tulkin käynnistäminen tapahtuu komentoriviltä komennolla <code>python3</code>.
+</p>
+
+<% partial 'partials/terminal' do %>
+  $ python3
+  Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+  [GCC 5.4.0 20160609] on linux
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> print("Hello world!")
+  Hello world!
+  >>> muuttuja = 5
+  >>> print(muuttuja)
+  5
+  >>> def testi():
+  ...     print("Testi!")
+  ... 
+  >>> testi()
+  Testi!
+  >>> exit()
+  $
+<% end %>
+
+
+<p>
+  Python-kieliset ohjelmat tallennetaan <code>.py</code>-päätteisiin lähdekooditiedostoihin. Lähdekooditiedostot ovat tekstimuotoisia (aivan samalla tavalla kuin Java-kieliset lähdekooditiedostot). Oletetaan, että alla oleva lähdekoodi on tallennettu tiedostoon <code>ohjelma.py</code> ja että käyttäjä on komentoriviltä samassa kansiossa tiedoston kanssa. Tällöin ohjelman suoritus onnistuu komennolla <code>python3 ohjelma.py</code> -- tässä pyydetään Python-tulkkia suorittamaan tiedostossa <code>ohjelma.py</code> oleva lähdekoodi. 
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  def esimerkki():
+      print("Tämä on esimerkki")
+
+  esimerkki()
+<% end %>
+
+<% partial 'partials/terminal' do %>
+  $ ls
+  ohjelma.py
+  $ python3 ohjelma.py
+  Tämä on esimerkki
+  $
+<% end %>
+
+<% partial 'partials/material_sub_heading' do %>
+  Muuttujat ja tyypitys
+<% end %>
+
+<p>
+  Muuttujan esittely tapahtuu kirjoittamalla muuttujan nimi, yhtäsuuruusmerkki, ja muuttujalle asetettava arvo. Alla olevassa ohjelmassa luodaan muuttuja nimeltä luku, johon asetetaan arvo 42.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  muuttuja = 42
+<% end %>
+
+<p>
+  Pythonissa on karkeasti ajatellen kuusi erilaista muuttujatyyppiä: luvut (kokonaisluku ja liukuluku), merkkijonot, listat, muuttumattomat listat ("tuplet"), joukot, ja sanakirjat ("Javan hajautustaulut"). Näiden lisäksi ohjelmoija voi luoda omia luokkia ja esitellä tätä kautta uusia muuttujatyyppejä.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  kokonaisluku = 42
+  print(kokonaisluku)
+  print(type(kokonaisluku))
+
+  liukuluku = 3.14159
+  print(liukuluku)
+  print(type(liukuluku))
+
+  merkkijono = "42/3.14159 ~ 13.37"
+  print(merkkijono)
+  print(type(merkkijono))
+
+  lista = (42, 21, 10.5)
+  print(lista)
+  print(type(lista))
+
+  muuttumatonlista = [42, 21, 10.5]
+  print(muuttumatonlista)
+  print(type(muuttumatonlista))
+
+  joukko = {"123", "456", 42}
+  print(joukko)
+  print(type(joukko))
+
+  sanakirja = {"eka":1, "toka": 2}
+  print(sanakirja)
+  print(type(sanakirja))
+<% end %>
+  
+<% partial 'partials/sample_output' do %>
+  42
+  &lt;type 'int'&gt;
+  3.14159
+  &lt;type 'float'&gt;
+  42/3.14159 ~ 13.37
+  &lt;type 'str'&gt;
+  (42, 21, 10.5)
+  &lt;type 'tuple'&gt;
+  [42, 21, 10.5]
+  &lt;type 'list'&gt;
+  set([42, '123', '456'])
+  &lt;type 'set'&gt;
+  {'toka': 2, 'eka': 1}
+  &lt;type 'dict'&gt;
+<% end %>
+
+
+<% partial 'partials/hint', locals: { name: 'Python on dynaamisesti tyypitetty kieli' } do %>
+
+  <p>
+    Dynaamisesti tyypitetyssä kielessä muuttujan nimi on linkitetty olioon tai null-viitteeseen. Tämä tarkoittaa sitä, että muuttujan arvon muuttaminen -- eli nimen linkittäminen johonkin toiseen olioon -- muuttaa myös muuttujan tyyppiä.
+  </p>
+
+  <p>
+    Vahvasti tyypitetyssä kielessä kuten Java muuttujan nimeen on linkitetty sekä tyyppi että olio. Tämä tarkoittaa sitä, että muuttujan tyyppi ei voi muuttua sen jälkeen kun se on kertaalleen asetettu. 
+  </p>
+  
+<% end %>
+
+
+<p>
+  Koska Python on dynaamisesti tyypitetty kieli, on myös seuraavanlainen ohjelmointi mahdollista.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  muuttuja = 42
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = 3.14159
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = "42/3.14159 ~ 13.37"
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = (42, 21, 10.5)
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = [42, 21, 10.5]
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = {"123", "456", 42}
+  print(muuttuja)
+  print(type(muuttuja))
+
+  muuttuja = {"eka":1, "toka": 2}
+  print(muuttuja)
+  print(type(muuttuja))
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  42
+  &lt;type 'int'&gt;
+  3.14159
+  &lt;type 'float'&gt;
+  42/3.14159 ~ 13.37
+  &lt;type 'str'&gt;
+  (42, 21, 10.5)
+  &lt;type 'tuple'&gt;
+  [42, 21, 10.5]
+  &lt;type 'list'&gt;
+  set([42, '123', '456'])
+  &lt;type 'set'&gt;
+  {'toka': 2, 'eka': 1}
+  &lt;type 'dict'&gt;
+<% end %>
+
+
+
+<p>
+  Yllä olevassa esimerkissä demonstroidaan sekä pythonin muuttujia että dynaamista tyypitystä. Muuttujan tyyppiä voi vaihtaa asettamalla siihen uuden arvon.
+
+<p>
+  Muuttujien elinkaari on Pythonissa ja Javassa samankaltainen. Muuttuja on olemassa sen esittelyhetkestä lähtien siihen asti kunnes muuttujaan ei enää viitata ohjelmakoodissa. Pythonissa, kuten Javassa, on automaattinen roskienkerääjä, joka vapauttaa muuttujia varten varatun muistin kun niihin ei enää viitata. 
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Nimeämiskäytänteet' } do %>
+
+  <p>
+    Pythonissa muuttujien, metodien, funktioiden, luokkien ym nimet aloitetaan kirjaimella (A-Z tai a-z) tai alaviivalla (_), joita seuraa nollasta äärettömään määrä kirjaimia, alaviivoja tai numeroita. Python-ohjelmoinnissa noudatetaan yleisesti seuraavia nimeämiskäytänteitä:
+  </p>
+  
+  <ul>
+    <li>
+      Luokkien nimet aloitetaan isolla kirjaimella. Kaikki muut muuttujat aloitetaan pienellä kirjaimella.
+    </li>
+    <li>
+      Yhdellä alaviivalla aloitettu muuttujan nimi tarkoittaa, että muuttujaa tulee ajatella kapseloituna (Javan private). Esimerkiksi muuttuja nimeltä "_ika" olisi oliomuuttuja, jota tulee käsitellä vain olion tarjoamista metodeista.
+    </li>
+    <li>
+      Kapselointia voi korostaa kahdella alaviivalla. Esimerkiksi muuttujaa nimeltä "__ika" ei missään nimessä tule käsitellä muualta kuin olion tarjoamista metodeista.
+    </li>
+    <li>
+      (TODO: halutaanko sanoa ohjelmointikielen tarjoamista erikoisnimista, esim "__name__"?
+    </li>
+
+  </ul>
+
+  <p>
+    Python on case-sensitive, eli pienillä kirjaimilla kirjoitettuun muuttujan nimeen ei voi viitata isoilla kirjaimilla kirjoitetulla muuttujan nimellä. Käytännössä siis "muuttuja" on eri kuin "Muuttuja" tai "MUUTTUJA".
+  </p>
+
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kontrollirakenteet
+<% end %>
+
+<p>
+  Kontrollirakenteilla ohjataan ohjelman suoritusta. Pythonissa on ohjelmointikielille tyypilliset ehtolauseet ja toistolauseet. 
+</p>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Ehtolause
+<% end %>
+
+<p>
+  Ehtolause <code>if</code> toteutetaan Pythonissa seuraavasti. 
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  muuttuja = 42
+
+  if muuttuja == 42:
+      print("Muuttujan arvo oli 42")
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Muuttujan arvo oli 42
+<% end %>
+
+<p>
+  Ehtolauseen lauseketta ei ympäröidä suluilla eikä ehtolauseen lohkoa rajata aaltosuluilla. Ehtolauseen lauseke päättyy kaksoispisteeseen, jota seuraa suoritettava lohko. Ohjelmakoodin sisennys kertoo lohkoon kuuluvat lauseet.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  muuttuja = 42
+
+  if muuttuja != 42:
+      print("Muuttujan arvo oli 42")
+      print("Jei!")
+
+  print("Ok!")
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Ok!
+<% end %>
+
+
+
+<% partial 'partials/hint', locals: { name: 'Sisennys kertoo lohkosta, johon rivi kuuluu' } do %>
+
+  <p>
+    Python-kielessä sisennyksellä on kriittinen rooli ohjelman toiminnallisuuden kannalta. Sisennys määrittelee lohkon, johon kukin rivi kuuluu. Mikäli sisennys on väärin, näemme virheen <code>IndentationError</code>.
+  </p>
+
+  <p>
+    Sisennys on tyypillisesti neljä välilyöntiä. Alla olevassa esimerkissä sisennys on virheellinen.
+  </p>
+
+  <% partial 'partials/python_highlight' do %>
+    muuttuja = 42
+
+    if muuttuja == 42:
+        print("Muuttujan arvo oli 42")
+       print("Virheellinen sisennys")
+
+    print("Ok!")
+  <% end %>
+
+  <p>
+    Ohjelman suorittaminen antaa virheen:
+  </p>
+  
+
+  <% partial 'partials/sample_output' do %>
+      File "ohjelma.py", line 6
+        print("Virheellinen sisennys")
+                                     ^
+    IndentationError: unindent does not match any outer indentation level
+  <% end %>
+
+  <p>
+    Alla olevassa esimerkissä taas sisennys on kunnossa.
+  </p>
+
+  <% partial 'partials/python_highlight' do %>
+    muuttuja = 42
+
+    if muuttuja == 42:
+        print("Muuttujan arvo oli 42")
+        print("Oikein oleva sisennys")
+
+    print("Ok!")
+  <% end %>
+
+  <p>
+    Sisennyksiä voi olla sisäkkäin useampia. Alla oleva esimerkki on Python-kielen näkökulmasta oikein toimiva.
+  </p>
+
+  <% partial 'partials/python_highlight' do %>
+    muuttuja = 42
+    toinen = 13
+
+    if muuttuja == 42:
+        print("Muuttujan arvo oli 42")
+        print("Oikein oleva sisennys")
+
+        if toinen == 13:
+            print("Toisen muuttujan arvo oli 13")
+    
+    print("Ok!")
+  <% end %>
+  
+  <% partial 'partials/sample_output' do %>
+    Muuttujan arvo oli 42
+    Oikein oleva sisennys
+    Toisen muuttujan arvo oli 13
+    Ok!
+  <% end %>
+  
+<% end %>
+
+
+<p>
+  Javasta tutut <code>if</code>, <code>else if</code> ja <code>else</code> löytyvät Pythonissa nimillä <code>if</code>, <code>elif</code> ja <code>else</code>. 
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  muuttuja = 13
+
+  if muuttuja == 42:
+      print("Muuttujan arvo oli 42")
+  elif muuttuja == 13:
+      print("Muuttujan arvo oli 13")
+  else:
+      print("Muuttujan arvo ei ollut 42 tai 13")
+  
+  print("Ok!")
+<% end %>
+
+
+<p>
+  Pythonissa on käytössä kaikki Javasta tutut loogiset operaatiot: pienempi kuin <code>&lt;</code>, suurempi kuin <code>&gt;</code>, pienempi tai yhtäsuuri kuin <code>&lt;=</code>, suurempi tai yhtä suuri kuin <code>&gt;=</code>, yhtä suuri kuin <code>==</code> ja erisuuri kuin <code>!=</code>.
+</p>
+
+<p>
+  Javasta poiketen Python käyttää lausekkeiden vertailussa <code>ja</code> ja <code>tai</code> sanojen englanninkielisiä vastineita. Javan <code>||</code> merkitään Pythonissa <code>or</code>. Vastaavasti Javan <code>&&</code> merkitään Pythonissa <code>and</code>. 
+
+<p>
+  Suluilla voidaan ryhmitellä vertailuja -- alla oleva esimerkki tarkastaa onko muuttujan vuosi arvo karkausvuosi.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  vuosi = 2020
+
+  if vuosi % 4 == 0 and (vuosi % 100 != 0 or vuosi % 400 == 0):
+      print("Annettu vuosi oli karkausvuosi.")
+<% end %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Toistolause
+<% end %>
+
+<p>
+  Pythonista löytyy sekä <code>while</code> että <code>for</code> -toistolauseet. Pythonissa on myös avainsanat <code>continue</code>, jonka suorittaminen siirtää ohjelman suorituksen toistolauseen alkuun, sekä <code>break</code>, jonka suorittaminen lopettaa toistolauseen suorituksen jolloin seuraava suoritettava lause on toistolauseen lohkoa seuraava rivi. 
+</p>
+
+<p>
+  Klassinen while-true -toistolause kirjoitetaan seuraavasti. Pythonissa on valmiina totuusarvoinen muuttuja <code>True</code>, joka vastaa Javan <code>true</code>-arvoa.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  arvo = 0
+
+  while True:
+      print(arvo)
+      arvo += 1
+
+      if arvo == 3:
+          break
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  0
+  1
+  2
+<% end %>
+
+<p>
+  Toistolauseen <code>while</code> avainsanaa seuraa lauseke, jonka evaluoinnin tuloksena saatu totuusarvo kertoo jatketaanko toistolauseen suoritusta. Yllä olevassa esimerkissä lausekkeen arvo on aina totta. Lausekkeen voi kirjoittaa myös auki ehtona -- alla olevan esimerkin tulostus vastaa edellä olevaa esimerkkiä.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  arvo = 0
+
+  while arvo != 3:
+      print(arvo)
+      arvo += 1
+<% end %>
+
+<p>
+  Pythonin <code>for</code>-toistolause poikkeaa Javan <code>for</code>-lauseesta: se muistuttaa enemmänkin Javan <code>for-each</code>-lausetta.
+</p>
+
+<p>
+  Pythonin <code>for</code>-toistolauseella käydään kokoelmia läpi. Lukujen läpikäynti onnistuu erillisen <code>range</code>-funktion avulla, joka palauttaa luvut nollasta yhtä annettua arvoa pienempään asti.
+</p>
+
+<p>
+  Alla olevassa esimerkissä tulostetaan for-lauseen avulla luvut 0, 1 ja 2.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  for arvo in range(3):
+      print(arvo)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  0
+  1
+  2
+<% end %>
+
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Tietorakenteet
+<% end %>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Lista
+<% end %>
+
+<p>
+  Listaan voi lisätä tietoa ja listasta voi poistaa tietoa. Listan koko on käytännössä rajoittamaton, eli se kasvaa sitä mukaa kun sinne lisätään tietoa. Pythonin lista on toteutukseltaan Javan ArrayListin kaltainen.
+</p>
+
+<p>
+  Listamuuttuja luodaan hakasulkeilla <code>[]</code>. Arvojen lisääminen listaan onnistuu määrittelemällä arvot hakasulkeiden sisälle. Tietyssä listan indeksissä olevaan arvoon viitataan samalla tavalla kuin Javan taulukoissa eli hakasulkeiden avulla. Alla olevassa esimerkissä luodaan neljä arvoa sisältävä lista ja tulostetaan ensimmäisessä ja kolmannessa indeksissä olevat arvot.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  lista = [100, 10, 1, 0]
+  print(lista[1])
+  print(lista[3])
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  10
+  0
+<% end %>
+
+<p>
+  Python tarjoaa listojen käsittelyyn joukon metodeja, joista alla muutama.
+</p>
+
+<ul>
+  <li>
+    <code>lista.append(arvo)</code> lisää arvo listan loppuun.
+  </li>
+  <li>
+    <code>lista.insert(indeksi, arvo)</code> siirtää annetussa indeksissä ja indeksiä seuraavissa indekseissä olevia arvoja yhden eteenpäin ja asettaa annetun arvon indeksiin
+  </li>
+  <li>
+    <code>lista.index(arvo)</code> etsii annettua arvoa listasta ja palauttaa arvon indeksin mikäli se löytyy. Mikäli arvoa ei löydy, heittää poikkeuksen.
+  </li>
+  <li>
+    <code>lista.remove(arvo)</code> etsii annettua arvoa listasta ja poistaa arvon mikäli se löytyy. Mikäli arvoa ei löydy, heittää poikkeuksen.
+  </li>
+</ul>
+
+<p>
+  Lisää metodeja löytyy Pythonin dokumentaatiosta <a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" norel>https://docs.python.org/3/tutorial/datastructures.html</a>.
+</p>
+
+<p>
+  Metodien käyttöä on demonstroitu alla.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  lista = []
+  lista.append(5)
+  lista.append(2.5)
+  lista.append(1.25)
+
+  print(lista.index(1.25))
+  print(lista[lista.index(1.25)])
+
+  lista.remove(5)
+
+  print(lista.index(1.25))
+  print(lista[lista.index(1.25)])
+
+  lista.insert(0, 100)
+
+  print(lista.index(1.25))
+  print(lista[lista.index(1.25)])
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  2
+  1.25
+  1
+  1.25
+  2
+  1.25
+<% end %>
+
+<p>
+  Listan läpikäynti onnistuu for-lauseen avulla suoraviivaisesti.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  lista = [100, 10, 1, 0]
+  for luku in lista:
+      print(luku)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  100
+  10
+  1
+  0
+<% end %>
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Muuttumaton lista
+<% end %>
+
+<p>
+  Listasta on mahdollista tehdä myös muuttumaton lista. Muuttumaton lista esitellään sulkujen avulla.
+</p>
+  
+<% partial 'partials/python_highlight' do %>
+  lista = (100, 10, 1, 0)
+  print(lista[0])
+  print(lista[2])
+  
+  for luku in lista:
+      print(luku)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  100
+  1
+  100
+  10
+  1
+  0
+<% end %>
+
+<p>
+  Muuttumaton lista poikkeaa tavallisesta listasta siinä, että sillä on vain rajattu joukko tavallisen listan metodeja käytössään. Esimerkiksi lisääminen tai poistaminen aiheuttaa virheen.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  lista = (100, 10, 1, 0)
+  lista.append(-1)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Traceback (most recent call last):
+    File "ohjelma.py", line 2, in &lt;module&gt;
+      lista.append(-1)
+  AttributeError: 'tuple' object has no attribute 'append'
+<% end %>
+
+<p>
+  Yllä olevasta virheviestistä huomaamme, että kyseessä ei ole oikeastaan lista vaan monikko (tuple). Muuttumattomien listojen käyttö on Pythonissa tyypillistä, kun haluamme esimerkiksi palauttaa funktiosta arvopareja.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Joukko ja sanakirja
+<% end %>
+
+<p>
+  Python tarjoaa myös Javan HashSet ja HashMap-luokkia vastaavat tietorakenteet. Pythonissa nämä ovat <code>set</code> ja <code>dictionary</code>.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  joukko = {1, 3, 5, 5, 3, 1}
+  print(joukko)
+
+  sanakirja = {"yksi": 1, "kolme": 3}
+  print(sanakirja)
+<% end %>
+
+
+<% partial 'partials/sample_output' do %>
+  set([1, 3, 5])
+  {'yksi': 1, 'kolme': 3}
+<% end %>
+
+<p>
+  Näistäkin tietorakenteista löytyy lisää tietoa Pythonin dokumentaatiosta osoitteesta <a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" norel>https://docs.python.org/3/tutorial/datastructures.html</a>.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Funktiot
+<% end %>
+
+<p>
+  Kuten Javassa, Pythonissa funktiot ovat suoritettavia nimettyjä lähdekoodilohkoja. Funktion määrittely Pythonissa tapahtuu avainsanalla <code>def</code>, jota seuraa funktion nimi, sulut, mahdolliset parametrit sekä kaksoispiste. Kaksoispisteen jälkeen alkaa lohko, joka sisältää funktion lähdekoodin.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  def tulostaHei():
+      print("Hei!")
+<% end %>
+
+<p>
+  Kun funktio on esitelty, sen kutsuminen tapahtuu nimen perusteella. Esimerkiksi yllä kuvattua funktiota <code>tulostaHei</code> kutsutaan kutsulla <code>tulostaHei()</code>.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  tulostaHei()
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei!
+<% end %>
+
+<p>
+  Parametrien määrittely tapahtuu lisäämällä parametrit funktion määrittelyn yhteydessä annettujen sulkujen sisään. Alla olevassa esimerkissä luodaan funktio, joka tulostaa merkkijonon "Hei!" parametrina annetusta luvusta riippuvan määrän.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  def tulosta(montakoKertaa):
+      for kerta in range(montakoKertaa):
+          print("Hei!")
+<% end %>
+
+<p>
+  Funktion kutsu:
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta(5)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei!
+  Hei!
+  Hei!
+  Hei!
+  Hei!
+<% end %>
+
+<p>
+  Funktiolle voidaan määritellä useampi parametri. Parametrit erotellaan toisistaan pilkuilla. Alla edellistä funktiota on muokattu siten, että funktiolle annetaan parametrina lukumäärän lisäksi myös tulostettava arvo.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  def tulosta(montakoKertaa, tulostettava):
+      for kerta in range(montakoKertaa):
+          print(tulostettava)
+<% end %>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta(3, "Hei")
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei
+  Hei
+  Hei
+<% end %>
+
+<p>
+  Toisin kuin Javassa, Pythonissa funktioiden parametreille voidaan määritellä myös oletusarvot. Näitä arvoja käytetään mikäli funktiokutsun yhteydessä ei anneta parametrille arvoa.
+</p>
+
+<p>
+  Oletusarvojen määrittely tapahtuu parametrien määrittelyn yhteydessä yhtäsuuruusmerkillä. Alla määriteltävä funktio <code>tulosta</code> tulostaa oletuksena merkkijonon "Hei" kerran.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  def tulosta(montakoKertaa = 1, tulostettava = "Hei"):
+      for kerta in range(montakoKertaa):
+          print(tulostettava)
+<% end %>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta()
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei
+<% end %>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta(2)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei
+  Hei
+<% end %>
+
+<p>
+  Huomaa, että parametrien järjestyksellä on väliä. Seuraava kutsu aiheuttaa virheen.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta("Heippa")
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Traceback (most recent call last):
+    File "ohjelma.py", line 5, in &lt;module&gt;
+      tulosta("Heippa")
+    File "ohjelma.py", line 2, in tulosta
+      for kerta in range(montakoKertaa):
+  TypeError: range() integer end argument expected, got str.
+<% end %>
+
+<p>
+  Vaikka kaikki Pythonin muuttujat ovat olioita, on Pythonissa silti näkyvissä Javan kaltainen käyttäytyminen alkeis- ja viittaustyyppisiin muuttujiin liittyen. Käytännössä Pythonin luvut ovat muuttumattomia (immutable), ja niiden muuttaminen luo uuden olion.
+</p>
+
+<p>
+  Kun funktiokutsussa annetaan parametri, parametrin arvo kopioituu suoritettavan funktion käyttöön funktion suorituksen ajaksi. Tämä käytännössä tarkoittaa sitä, että muuttumattomien muuttujien käsittely funktion sisällä ei vaikuta muuttujan arvoon funktion ulkopuolella, kun taas muuttuvien muuttujien käsittely voi vaikuttaa myös funktion ulkopuolella olevaan muuttujan arvoon.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  def lisaaListaan(lista):
+      lista.append(1)
+
+  def lisaaLukuun(luku):
+      luku += 1
+<% end %>
+
+<% partial 'partials/python_highlight' do %>
+  lista = []
+  print(lista)
+  lisaaListaan(lista)
+  print(lista)
+
+  luku = 0
+  print(luku)
+  lisaaLukuun(luku)
+  print(luku)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  []
+  [1]
+  0
+  0
+<% end %>
+
+<p>
+  Kuten Javassa, funktiosta voi palauttaa arvon <code>return</code>-komennolla.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  def lisaaLukuun(luku):
+      luku += 1
+      return luku
+<% end %>
+
+<% partial 'partials/python_highlight' do %>
+  luku = 0
+  print(luku)
+  lisaaLukuun(luku)
+  print(luku)
+  luku = lisaaLukuun(luku)
+  print(luku)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  0
+  0
+  1
+<% end %>
+
+
+<p>
+  Lisää funktioiden määrittelystä osoitteessa <a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions" target="_blank" norel>https://docs.python.org/3/tutorial/controlflow.html#defining-functions</a>.
+</p>
+
+
+<% partial 'partials/material_heading' do %>
+  Olio-ohjelmointi
+<% end %>
+
+<p>
+  Python tarjoaa välineet myös olio-ohjelmointiin. Kuten Javassa, luokan luominen Pythonissa luo kieleen uuden muuttujatyypin, johon voidaan viitata jatkossa. Luokka luodaan avainsanalla <code>class</code>, jota seuraa luokan nimi sekä kaksoispiste. Kaksoispistettä seuraa luokan sisältämä lohko.
+</p>
+
+<p>
+  Alla luodaan luokka <code>Henkilo</code> sekä määritellään sille konstruktori. Konstruktori on aina nimeltä <code>__init__</code> ja se saa parametrinaan vähintään <code>self</code>-viitteen. Viite <code>self</code> on Javan <code>this</code>-viitteen kaltainen ja se viittaa aina käsiteltävään olioon.
+</p>
+
+<p>
+  Javasta poiketen, Pythonissa oliomuuttujat määritellään tyypillisesti osana konstruktoria.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  class Henkilo:
+      def __init__(self):
+          self.nimi = "Matti Meikäläinen"
+<% end %>
+
+<p>
+  Konstruktoria kutsutaan luokan nimen kautta. Alla olevassa esimerkissä luodaan uusi henkilöolio, joka tulostetaan.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  h = Henkilo()
+  print(h)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  <__main__.Henkilo object at 0x7f8cb49e8898>
+<% end %>
+
+<p>
+  Pythonissa Javan <code>toString</code>-metodia vastaa metodi <code>__str__</code>. Muokataan luokkaa <code>Henkilo</code> siten, että henkilön tulostaminen tulostaa henkilön nimen.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  class Henkilo:
+      def __init__(self):
+          self.nimi = "Matti Meikäläinen"
+
+      def __str__(self):
+          return self.nimi
+<% end %>
+
+<p>
+  Nyt tulostus on ymmärrettävämpi.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  h = Henkilo()
+  print(h)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Matti Meikäläinen
+<% end %>
+
+<p>
+  Olioon liittyvien metodien määrittely tapahtuu määrittelemällä self-parametrillisia funktioita luokan sisälle. Alla luokan Henkilo konstruktoria on muutettu siten, että nimen voi halutessaan antaa parametrina. Tämän lisäksi henkilöllä on ikä, joka muuttuu metodia vanhene kutsuttaessa.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  class Henkilo:
+      def __init__(self, nimi = "Matti Meikäläinen"):
+          self.nimi = nimi
+          self.ika = 0
+
+      def vanhene(self):
+          self.ika += 1
+
+      def __str__(self):
+          return self.nimi + ", ikä: " + str(self.ika)
+<% end %>
+
+
+<% partial 'partials/python_highlight' do %>
+  matti = Henkilo()
+  print(matti)
+  matti.vanhene()
+  print(matti)
+
+  maija = Henkilo("Maija Meikäläinen")
+  print(maija)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Matti Meikäläinen, ikä: 0
+  Matti Meikäläinen, ikä: 1
+  Maija Meikäläinen, ikä: 0
+<% end %>
+
+<p>
+  Yllä esitetyllä tavalla esiteltyjä muuttujia voi muuttaa suoraan. Alla Maijan iäksi asetetaan 10.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  maija = Henkilo("Maija Meikäläinen")
+  maija.ika = 10
+  print(maija)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Maija Meikäläinen, ikä: 10
+<% end %>
+
+<p>
+  Mikäli muuttujista halutaan Javan private-tyyppistä muuttujaa vastaavat, eli sellaiset ettei niitä voida käsitellä suoraan luokan ulkopuolelta, lisätään muuttujien nimen alkuun kaksi alaviivaa.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  class Henkilo:
+      def __init__(self, nimi = "Matti Meikäläinen"):
+          self.__nimi = nimi
+          self.__ika = 0
+
+      def vanhene(self):
+          self.__ika += 1
+
+      def __str__(self):
+          return self.__nimi + ", ikä: " + str(self.__ika)
+<% end %>
+
+<p>
+  Nyt iän muuttaminen ei onnistu suoraan, mutta vanheneminen on yhä mahdollista.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  maija = Henkilo("Maija Meikäläinen")
+  maija.ika = 10
+  maija.__ika = 10
+  print(maija)
+  maija.vanhene()
+  print(maija)
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Maija Meikäläinen, ikä: 0
+  Maija Meikäläinen, ikä: 1
+<% end %>
+
+
+<p>
+  Lisää luokkien ja olioiden luomisesta löytyy Pythonin dokumentaatiosta osoitteessa <a href="https://docs.python.org/3/tutorial/classes.html" target="_blank" norel>https://docs.python.org/3/tutorial/classes.html</a>.
+</p>
+

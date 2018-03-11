@@ -1,0 +1,366 @@
+---
+  title: Viikko 1
+  exercise_page: false
+  quiz_page: false
+  published: true
+---
+
+
+<% partial 'partials/hint', locals: { name: 'Viikon 1 etapit' } do %>
+
+  <ul>
+    <li>
+      Olet asentanut kurssilla tarvittavat työvälineet.
+    </li>
+    <li>
+      Olet lukenut materiaalissa olevan lyhyen Python-oppaan ja kokeillut siinä olevia esimerkkejä.
+    </li>
+    <li>
+      Olet tutustunut web-sovellusten toimintaan ja toteuttanut ensimmäisen Flaskia käyttävän web-sovelluksesi.
+    </li>
+    <li>
+      Olet valinnut harjoitustyöllesi aiheen.
+    </li>
+    <li>
+      Olet luonut harjoitustyölle github-repositoryn, jossa on lyhyt kuvaus harjoitustyön aiheesta.
+    </li>
+  </ul>
+  
+<% end %>
+
+
+<% partial 'partials/material_heading' do %>
+  Web-sovellusten perusteet
+<% end %>
+
+<p>
+  Web-sovellukset koostuvat selain- ja palvelinpuolesta. Käyttäjä käyttää selainohjelmistoa (esim. Chrome, kännykän selain, pädin selain, Kindlen selain, ...), joka tekee käyttäjän toimien perusteella pyyntöjä verkossa sijaitsevalle palvelimelle. Kun palvelin vastaanottaa pyynnön, se käsittelee pyynnön ja rakentaa vastauksen. Vastaus voi sisältää esimerkiksi web-sivun HTML-koodia tai jossain muussa muodossa olevaa tietoa.
+</p>
+
+<p>
+  Palvelin on kone aivan samalla tavalla kuin kännykkä, kannettava tietokone, pädi ym on kone. Kumpikin on kiinni verkossa, ja kummallakin on (ainakin välillisesti) koneen tunnistava IP-osoite. Kun käyttäjä tekee selainohjelmistolla pyynnön, pyyntö ohjautuu käyttäjän koneen verkkoyhteyden kautta palvelimen koneelle, jossa palvelinohjelmisto vastanottaa pyynnön ja käsittelee sen. Vaikka käyttäjä hakee tyypillisesti tekstimuotoisia osoitteita kuten <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a>, ei koneet näistä ymmärrä -- verkossa on erilliset palvelut tekstimuotoisten osoitteiden muuntamiseksi IP-osoitteiksi.
+</p>
+
+<p>
+  Selaimen tekemät pyynnöt noudattavat HTTP-protokollaa, joka on määritelty standardi pyyntöjen tekemiseen sekä niiden käsittelyyn. Resurssien -- eli tietyn osoitteen polkujen -- hakeminen tapahtuu HTTP-protokollan GET-tyyppisillä pyynnöillä, kun taas tiedon lähettäminen tapahtuu HTTP-protokollan POST-tyyppisillä pyynnöillä.
+</p>
+
+<p>
+  Selaimet tarjoavat tyypillisesti mahdollisuuden haettavien resurssien tarkasteluun. Esimerkiksi Google Chromessa selaintyövälineet saa auki painamalla näppäinyhdistelmää <code>Ctrl+Shift+I</code> tai valitsemalla Chromen valikosta <code>Developer Tools</code>. Selaimen työvälineet näyttävät seuraavalta.
+</p>
+
+<img src="/img/devtools-1.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Kun selaimeen kirjoittaa osoitteen -- alla olevassa esimerkissä <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> -- tekee selain GET-tyyppisen pyynnön osoitteeseen eli hakee osoitteessa olevalta palvelimelta polun osoittamaa resurssia.
+</p>
+
+<p>
+  Kun palvelin palauttaa resurssin, tyypillisesti HTML-kielisen sivun, voi resurssissa olla linkkejä myös toisiin resursseihin. Selaimet on ohjelmointu siten, että esimerkiksi HTML-kielisen sivun resurssit haetaan automaattisesti. Yhtä sivua haettaessa saatetaan noutaakin todellisuudessa kymmeniä ellei satoja resursseja.
+</p>
+
+<img src="/img/devtools-2.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Yllä olevassa kuvassa osoitteessa <a href="https://www.helsinki.fi/fi" target="_blank" norel>https://www.helsinki.fi/fi</a> olevan sivun lataus on vielä kesken. Sivua rakennettaessa on tehty 101 pyyntöä, ja tietoa on siirretty 1.6 megatavua.
+</p>
+
+
+<p>
+  Web-sovellusten kehitys on tapana jakaa selainohjelmistojen kehitykseen ja palvelinohjelmistojen kehitykseen, vaikkakin nykyään molemmat kattava fullstack-kehitys on yhä suositumpaa.
+</p>
+
+<p>
+  Selainohjelmistoja ja käyttöliittymää kehitettäessä painotetaan rakenteen, ulkoasun ja toiminnallisuuden erottamista toisistaan. Karkeasti voidaan sanoa, että selaimessa näkyvän sivun sisältö ja rakenne määritellään HTML-tiedostoilla, ulkoasu CSS-tiedostoilla ja toiminnallisuus JavaScript-tiedostoilla.
+</p>
+
+<p>
+  Palvelinpuolen toiminnallisuutta toteutettaessa keskitytään tyypillisesti selainohjelmiston tarvitsevan "APIn" suunnitteluun ja toteutukseen, sivujen muodostamiseen selainohjelmistoa varten, datan tallentamiseen ja käsittelyyn, sekä sellaisten laskentaoperaatioiden toteuttamiseen, joita selainohjelmistossa ei kannata tai voida tehdä.
+</p>
+
+
+
+<% partial 'partials/material_heading' do %>
+  Web-kehitys Flask-kirjastolla
+<% end %>
+
+<p>
+  Harjoitustyössä käytetään Pythonin <a href="http://flask.pocoo.org/" target="_blank">Flask</a>-kirjastoa web-sovelluksen toiminnallisuuden toteuttamiseen. Tutustutaan lyhyesti pienen Flask-sovelluksen toteuttamiseen. 
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Virtuaaliympäristön luominen
+<% end %>
+
+<p>
+  Luodaan ensin Python-virtuaaliympäristö sovellustamme varten komennolla <code>python3 -m venv <em>nimi</em></code>. Kutsutaan sovellusta nimellä <code>demo</code>. 
+</p>
+
+<% partial 'partials/terminal' do %>
+  $ ls
+  $ python3 -m venv demo
+  $ ls
+  demo
+  $ 
+<% end %>
+
+<p>
+  Nyt käytössämme on kansio <code>demo</code>. Mennään kansioon ja tarkastellaan sen sisältöä.
+</p>
+
+<% partial 'partials/terminal' do %>
+  $ ls
+  demo
+  $ cd demo
+  demo$ ls
+  bin  include  lib  lib64  pyvenv.cfg  share
+  $
+<% end %>
+
+<p>
+  Kansiossa on kansiot <code>bin</code>, <code>include</code>, <code>lib</code> ja <code>share</code>. Kansio <code>lib64</code> on todellisuudessa linkki kansioon <code>lib</code>. Tiedosto <code>pyvenv.cfg</code> sisältää virtuaaliympäristön asetukset.
+</p>
+
+<p>
+  Haluamme lisätä käyttöömme Flask-kirjaston. Tämä onnistuu kansiossa <code>bin</code> olevalla <code>pip</code>-kemonnolla.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ bin/pip install Flask
+  ....
+  ....
+  You are using pip version 8.1.1, however version 9.0.1 is available.
+  You should consider upgrading via the 'pip install --upgrade pip' command.
+  $ 
+<% end %>
+
+<p>
+  Flask-kirjaston asentamisen yhteydessä saimme tiedon siitä, että käytössä oleva pip on vanhahko. Päivitetään se samalla.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ bin/pip install --upgrade pip
+  Collecting pip
+    Using cached pip-9.0.1-py2.py3-none-any.whl
+      Installing collected packages: pip
+  Found existing installation: pip 8.1.1
+    Uninstalling pip-8.1.1:
+      Successfully uninstalled pip-8.1.1
+  Successfully installed pip-9.0.1
+  demo$ ls
+  bin  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$
+<% end %>
+
+<p>
+  Käytössämme on nyt Flask, jonka lisäksi versionhallinnassa käytetyn pipin versiota on päivitetty.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Ensimmäinen Flask-sovellus
+<% end %>
+
+<p>
+  <a href="http://flask.pocoo.org/" target="_blank" norel>Flask</a>-kirjaston etusivulla on seuraava lähdekoodi.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask
+  app = Flask(__name__)
+
+  @app.route("/")
+  def hello():
+      return "Hello World!"
+<% end  %>
+
+<p>
+  Luodaan uusi tiedosto <code>hello.py</code> edellä luotuun demo-kansioomme ja kopioidaan esimerkkilähdekoodi tiedoston <code>hello.py</code> sisällöksi. Suoritetaan tämän jälkeen tiedoston <code>hello.py</code> lähdekoodi.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  demo$
+<% end %>
+
+<p>
+  Mitään ei tapahtunut. Huraa?
+</p>
+
+<p>
+  Flask-sovellusten käynnistäminen suoraan tiedostosta vaatii sovellukseen vielä ohjeistuksen komentoriviltä käynnistämiseen. Lisätään <code>hello.py</code>-tiedostoon vielä muutama rivi, jotka ohjeistavat sovelluksen käynnistämiseen kun se suoritetaan komentoriviltä.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask
+  app = Flask(__name__)
+  
+  @app.route("/")
+  def hello():
+      return "Hello World!"
+
+  if __name__ == "__main__":
+      app.run()
+<% end  %>
+
+<p>
+  Kokeillaan sovelluksen käynnistämistä uudestaan.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+<% end %>
+
+<p>
+  Sovellus on nyt käynnissä. Kun menemme selaimella osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
+</p>
+
+<img src="/img/helloworld.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Sovellus on käynnissä! Huomaamme, että komentoriville on ilmestynyt muutamia lisärivejä. Rivit kuvaavat ovat palvelinohjelmiston logirivejä ja ne kertovat palvelimelle tulleista pyynnöistä.
+</p>
+
+<p>
+  Palvelimelle on tullut oikeastaan kaksi pyyntöä, vaikka haimme sivua vain kerran. Ensimmäinen pyyntö <code>"GET / HTTP/1.1"</code> haki tietoa sovelluksen juuripolusta. Tämä on oikeastaan juuri se, mitä sovelluksemme metodi <code>hello()</code> käsittelee. Toinen pyyntö <code>"GET /favicon.ico HTTP/1.1"</code> haki sivulle ikonia -- palvelimelta ei tällaista löytynyt.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  127.0.0.1 - - [29/Feb/2018 18:07:31] "GET / HTTP/1.1" 200 -
+  127.0.0.1 - - [29/Feb/2018 18:07:31] "GET /favicon.ico HTTP/1.1" 404 -
+<% end %>
+
+<p>
+  Palvelimen sammuttaminen onnistuu komentoriviltä painamalla <code>CTRL+C</code>, eli näppäimiä <code>ctrl</code> ja <code>c</code> samanaikaisesti.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Debug-moodi
+<% end %>
+
+<p>
+  Lähdekooditiedoston <code>hello.py</code> suorittaminen käynnistää palvelinohjelmiston.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+<% end %>
+
+<p>
+  Kun sovellus on käynnissä, muokkaukset tiedostoon <code>hello.py</code> eivät näy kun tietoa haetaan selaimella uudestaan. Ohjelmistokehityksen nopeuden kannalta olisi kuitenkin hyödyllistä, jos muutoksia voisi tarkastella ilman että palvelinta käynnistellään jatkuvasti uudelleen.
+</p>
+
+<p>
+  Flaskille voi määritellä ns. debug-moodin, mikä muuntaa sovelluksen toimintaa muunmuassa siten, että sovelluksen uudelleenkäynnistäminen muutosten yhteydessä ei ole tarpeellista. Muokataan sovelluksen käynnistävää tiedostoa <code>hello.py</code> siten, että komento <code>app.run()</code> saa parametrinaan tiedon debug-tilasta. Tämä onnistuu seuraavasti.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask
+  app = Flask(__name__)
+  
+  @app.route("/")
+  def hello():
+      return "Hello World!"
+
+  if __name__ == "__main__":
+      app.run(debug=True)
+<% end  %>
+
+<p>
+  Kun sovelluksen sammuttaa ja käynnistää uudelleen, selaimella sivu näyttää yhä seuraavalta.
+</p>
+
+<img src="/img/helloworld.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Terminaalissa tosin tulostus on hieman erilainen.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  * Restarting with stat
+  * Debugger is active!
+  * Debugger PIN: 231-450-049
+<% end %>
+
+<p>
+  Muokataan tiedostoa <code>hello.py</code> siten, että sivun pitäisi näyttää teksti "Hei maailma!".
+</p>
+
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask
+  app = Flask(__name__)
+  
+  @app.route("/")
+  def hello():
+      return "Hei maailma!"
+
+  if __name__ == "__main__":
+      app.run(debug=True)
+<% end  %>
+
+<p>
+  Kun tallennamme tiedoston, huomaamme, että terminaalissa näkyvä tulostus päivittyy.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+  demo$ bin/python3 hello.py
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  * Restarting with stat
+  * Debugger is active!
+  * Debugger PIN: 231-450-049
+  * Detected change in '/polku/demo/hello.py', reloading
+  * Restarting with stat
+  * Debugger is active!
+  * Debugger PIN: 231-450-049
+<% end %>
+
+<p>
+  Kun sivun lataa selaimessa uudestaan, sivulla näkyy nyt päivitetty teksti. 
+</p>
+
+<img src="/img/heimaailma.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Debug-tilasta on muitakin hyötyjä. Pääset esimerkiksi tarkastelemaan selaimesta sovelluksen tilaa virhetilanteen yhteydessä. Tämän takia on myös hyvä varmistaa, ettei debug-tila ole koskaan päällä kun sovellus viedään tuotantoon -- debug-tila mahdollistaa myös mm. tietokannan salasanojen ym tarkastelun. Ei hyvä asia tuotannossa.
+</p>
