@@ -16,7 +16,7 @@
       Olet lukenut materiaalissa olevan lyhyen Python-oppaan ja kokeillut siinä olevia esimerkkejä.
     </li>
     <li>
-      Olet tutustunut web-sovellusten toimintaan ja toteuttanut ensimmäisen Flaskia käyttävän web-sovelluksesi.
+      Olet tutustunut web-sovellusten toimintaan ja toteuttanut tämän sivun ohjeistusta noudattaen ensimmäisen Flaskia käyttävän web-sovelluksesi.
     </li>
     <li>
       Olet valinnut harjoitustyöllesi aiheen.
@@ -363,4 +363,451 @@
 
 <p>
   Debug-tilasta on muitakin hyötyjä. Pääset esimerkiksi tarkastelemaan selaimesta sovelluksen tilaa virhetilanteen yhteydessä. Tämän takia on myös hyvä varmistaa, ettei debug-tila ole koskaan päällä kun sovellus viedään tuotantoon -- debug-tila mahdollistaa myös mm. tietokannan salasanojen ym tarkastelun. Ei hyvä asia tuotannossa.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  HTML-näkymien luominen
+<% end %>
+
+<p>
+  Tutustutaan seuraavaksi HTML-kielellä toteutettavien näkymien luomiseen. Mikäli HTML-kieli ei ole tuttu, käy läpi ainakin osoitteessa <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" norel>https://developer.mozilla.org/en-US/docs/Learn/HTML</a> oleva opas.
+</p>
+
+<p>
+  Jatketaan aiemmin luodun sovelluksen parissa.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+<% end %>
+
+<p>
+  Luodaan HTML-näkymiä varten kansio nimeltä <code>templates</code> ja mennään kansioon.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ mkdir templates
+  demo$ cd templates
+  demo/templates$ ls
+  demo/templates$
+<% end %>
+
+<p>
+  Kansio on toistaiseksi tyhjä. Luodaan kansioon kaksi tiedostoa <code>layout.html</code> ja <code>index.html</code>. Tiedostoon <code>layout.html</code> tulee sivun yleinen rakenne, menuvalikko ym. Tiedostoon <code>index.html</code> taas sivun etusivun sisältö.
+</p>
+
+<p>
+  Asetetaan sivun <code>layout.html</code> sisällöksi seuraava.
+</p>
+
+<% partial 'partials/xml_highlight' do %>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;Demo&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+      {% block body %}
+      &lt;p&gt;
+	Tähän tuodaan sisältö muualta.
+      &lt;/p&gt;
+      {% endblock %}
+    &lt;/body&gt;
+  &lt;/html&gt;
+<% end %>
+
+<p>
+  Ja sivun <code>index.html</code> sisällöksi seuraava.
+</p>
+
+<% partial 'partials/xml_highlight' do %>
+  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;p&gt;
+    Hei maailma!
+  &lt;/p&gt;
+  {% endblock %}
+<% end %>
+
+<% partial 'partials/hint', locals: { name: 'Jinja 2' } do %>
+
+  <p>
+    Flask käyttää oletuksena <a href="http://jinja.pocoo.org/docs/2.10/">Jinja</a>-nimistä kirjastoa käyttäjälle näytettävien sivujen luomiseen. Jinja on hieman tietokantojen perusteista tutun Thymeleafin kaltainen kirjasto, jota käytetään HTML-sivujen luomiseen. Jinja mahdollistaa myös esimerkiksi toistolauseiden ym. käyttämisen osana HTML-näkymiä -- sivut luodaan palvelimella.
+  </p>
+  
+<% end %>
+
+<p>
+  Nyt sovelluksemme kansion <code>templates</code> sisällön pitäisi olla seuraavanlainen.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo/templates$ ls
+  index.html  layout.html
+  demo/templates$
+<% end %>
+
+<p>
+  Palataan tiedostohierarkiassa aiempaan kansioon.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo/templates$ ls
+  index.html  layout.html
+  demo/templates$ cd ..
+  demo$
+<% end %>
+
+<p>
+  Muokataan kansiossa olevaa <code>hello.py</code>-tiedostoa. Emme näytäkään käyttäjälle suoraan merkkijonoa <code>Hei maailma!</code>, vaan luomme käyttäjälle näkymän juuri luomiemme tiedostojen pohjalta.
+</p>
+
+<p>
+  Tarvitsemme sovelluksen käyttöön Flaskin <code>render_template</code>-funktion. Funktio lisätään sekä tiedoston alussa olevaan import-lauseeseen, että pyynnön käsittelevään funktioon <code>hello</code>, jossa kyseistä funktiota kutsutaan. Funktiolle <code>render_template</code> annetaan kutsuttaessa parametrina HTML-tiedoston nimi, josta käyttäjälle palautettava sivu luodaan.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask, render_template
+  app = Flask(__name__)
+  
+  @app.route("/")
+  def hello():
+      return render_template("index.html")
+
+  if __name__ == "__main__":
+      app.run(debug=True)
+<% end  %>
+
+<p>
+  Käynnistetään sovellus.
+</p>
+
+<% partial 'partials/terminal' do %>
+  demo$ ls
+  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share  templates
+  demo$ bin/python3 hello.py 
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  * Restarting with stat
+  * Debugger is active!
+  * Debugger PIN: 231-450-049
+<% end %>
+
+<p>
+  Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a>, näemme seuraavanlaisen sivun.
+</p>
+
+<img src="/img/heimaailma-template.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Nopealla vilkaisulla mikään ei ole muuttunut. Kun tarkastelemme sivuun liittyvää lähdekoodia, huomaamme kuitenkin selkeitä muutoksia. Lähdekoodin tarkastelu onnistuu selaimessa klikkaamalla sivua oikealla hiirennäppäimellä ja valitsemalla <code>View page source</code> (pikanäppäin <code>Ctrl+S</code>).
+</p>
+
+<p>
+  Lähdekoodi paljastaa totuuden. Näyttää siltä, että sivun lähdekoodin runko on tullut <code>templates</code>-kansion tiedostosta <code>layout.html</code> ja sisältö tiedostosta <code>index.html</code>. 
+</p>
+
+<img src="/img/heimaailma-template-source.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+<p>
+  Voimme siis määritellä sivustolle ulkoasun tiedostossa <code>layout.html</code>. Sivukohtainen sisältö määritellään taas sivukohtaisessa tiedostossa -- esimerkiksi juurisivun sisältö löytyy tiedostosta <code>index.html</code>.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Tiedon lisääminen näkymään
+<% end %>
+
+<p>
+  Funktiolle <code>render_template</code> voidaan antaa parametreina muuttujia, joiden arvoja voidaan lisätä näkymiin. Tarkastellaan tässä muuttujien, listojen sekä olioita sisältävien listojen käsittelyä.
+</p>
+
+<p>
+  Näkymien luomiseen käytettävä Jinja-kirjasto etsii HTML-koodista kaksinkertaisilla aaltosuluilla rajattuja alueita sekä niiden sisällä olevaa koodia. Mikäli aaltosulkujen sisältä löytyy <code>render_template</code>-funktiolle parametrina annetun muuttujan nimi, aaltosulkujen paikalle vaihdetaan muuttujan arvo.
+</p>
+
+<p>
+  Kontrollirakenteita kuten <code>if</code> ja <code>for</code> voi käyttää Jinjassa yksinkertaisten aaltosulkujen avulla siten, että avaavaa aaltosulkua seuraa prosenttimerkki, ja lopettavaa aaltosulkua edeltää prosenttimerkki. Esimerkiksi <code>{% for arvo in lista %}{{ arvo }}{% endfor %}</code> kävisi jokaisen listalla olevan arvon läpi ja lisäisi sen sivulle.
+</p>
+
+<p>
+  Luodaan kansioon <code>templates</code> tiedosto <code>demo.html</code>, jonka avulla demonstroidaan useampaa tapaa muuttujien käyttöön. Asetetaan tiedoston sisällöksi seuraava.
+</p>
+
+<% partial 'partials/xml_highlight' do %>
+  {% extends "layout.html" %}
+
+  {% block body %}
+  &lt;p&gt;
+    Hei maailma!
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;!-- etsitään muuttujaa nimeltä nimi ja asetetaan sen arvo tähän --&gt;
+    {{ nimi }}
+  &lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;!-- Yritetään käydä lista-nimistä tietorakennetta läpi.
+	 Jokaiselle tietorakenteen alkiolle luodaan li-elementti, 
+	 jonka sisälle asetetaan alkion arvo. --&gt;
+    {% for arvo in lista %}
+    &lt;li&gt;{{ arvo }}&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nimi&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;!-- Yritetään käydä tietorakenne nimeltä esineet läpi. 
+	 Jokaiselle esineelle luodaan oma rivi taulukkoon. 
+	 Jokaista taulukon solua luodessa oletetaan, että 
+	 esine on olio, ja että alkiolla on muuttuja name. 
+	 Muuttujan arvo asetetaan solun arvoksi. --&gt;
+    {% for esine in esineet %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ esine.name }}&lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/table&gt;
+
+  {% endblock %}
+<% end %>
+
+<p>
+  Edellä oletetaan, että käytössä on kolme muuttujaa: <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Tämän lisäksi jokaisella esineellä tulee olla muuttuja <code>name</code>.
+</p>
+
+<p>
+  Muokataan taas tiedostoa <code>hello.py</code>. Luodaan tiedostoon esinettä kuvaava luokka <code>Item</code>, jolla on oliomuuttuja <code>name</code>. Luodaan tiedostoon myös muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code> ja asetetaan näihin esimerkkiä varten arvot.
+</p>
+
+<p>
+  Luodaan lopulta erillinen funktio, joka kuuntelee polkuun <code>/demo</code> tehtäviä pyyntöjä. Kun pyyntö vastaanotetaan, käyttäjälle palautetaan funktion <code>render_template</code> luoma sivua kuvaava merkkijono. Funktiolle <code>render_template</code> annetaan parametrina aiemmin luotua demosivua kuvaava <code>demo.html</code> sekä muuttujat <code>nimi</code>, <code>lista</code>, ja <code>esineet</code>. Jokaiselle muuttujalle asetetaan myös nimi kutsun funktiokutsun yhteydessä.
+</p>
+
+
+<% partial 'partials/python_highlight' do %>
+  from flask import Flask, render_template
+  app = Flask(__name__)
+
+  class Item:
+      def __init__(self, name):
+          self.name = name
+
+  nimi = "Essi Esimerkki"
+
+  lista = [1, 1, 2, 3, 5, 8, 11]
+
+  esineet = []
+  esineet.append(Item("Eka"));
+  esineet.append(Item("Toka"));
+  esineet.append(Item("Kolmas"));
+  esineet.append(Item("Neljäs"));
+  
+  @app.route("/")
+  def hello():
+      return render_template("index.html")
+
+  @app.route("/demo")
+  def content():
+      return render_template("demo.html", nimi=nimi, lista=lista, esineet=esineet)
+
+  if __name__ == "__main__":
+      app.run(debug=True)
+<% end %>
+
+<p>
+  Mikäli sovellus ei ole käynnissä, käynnistetään se.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  demo$ bin/python3 hello.py 
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  * Restarting with stat
+  * Debugger is active!
+  * Debugger PIN: 231-450-049
+<% end %>
+
+<p>
+  Osoitteessa <a href="http://127.0.0.1:5000/" target="_blank" norel>http://127.0.0.1:5000/</a> on tuttu sivu, joka näyttää viestin "Hei maailma!". Kun menemme osoitteeseen <a href="http://127.0.0.1:5000/demo" target="_blank" norel>http://127.0.0.1:5000/demo</a>, pyyntö ohjautuu <code>hello.py</code>-tiedoston funktiolle nimeltä <code>content</code>. Näemme lopulta seuraavanlaisen sivun.
+</p>
+
+
+<img src="/img/heimaailma-template-source.png"/>
+
+<p>
+  &nbsp;
+</p>
+
+
+<% partial 'partials/material_heading' do %>
+  Aiheen valinta
+<% end %>
+
+<% partial 'partials/material_sub_heading' do %>
+  Työ omasta aiheesta
+<% end %>
+
+<p>
+  Mikäli haluat tehdä työn omasta aiheesta ja työ täyttää harjoitustyön vaatimukset (tietokanta jossa noin 4-7 taulua, käyttöliittymä, järkevä maksimiarvosana), voit toteuttaa työn omalla aiheellasi. Omasta aiheesta täytyy laatia aihekuvaus valmiiden aiheiden tapaan, joka tulee palauttaa ensimmäisen viikon palautuksen yhteydessä. Voit myös toteuttaa valmiista aihe-ehdotuksesta oman variaatiosi.
+</p>
+
+<p>
+  Hyviä aiheideoita voit saada vaikkapa omista harrasteista ja kiinnostuksen kohteista. Kurssilla on vuosien saatossa toteutettu mm. kaikennäköisiä roolipelitietokantoja, lintutietokanta, bussinbongaustietokanta ja haalarimerkkigalleria.
+</p>
+
+<p>
+  Omasta aiheesta on sovittava ohjaajan kanssa. Täten varmistetaan aiheen sopiva laajuus, työ ei saa olla liian suppea, mutta se ei myöskään saa olla liian laaja. Mikäli haluat tehdä työn omasta aiheesta, ota aiheesi mielellään jo aloitusluennon jälkeen.
+</p>
+
+
+<% partial 'partials/material_sub_heading' do %>
+   Valmiita aiheaihioita
+<% end %>
+
+<p>
+  Alla on poimittuna osoitteesta <a href="http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/index.html" target="_blank" norel>http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/index.html</a> muutamia mahdollisia työaiheita. Sivulta aiheita löytyy enemmänkin -- huomaa, että em. sivulla olevat arvosanaehdotukset eivät aina pidä paikkansa.
+</p>
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Kevyempiä aiheita - maksimiarvosana noin 3
+<% end %>
+
+<strong>Kurssitarjonta ja kurssipaikan varaus</strong>
+
+<p>
+  Kurssikeskus Opinahjo järjestää maksullisia kursseja eri aihepiireistä. Yhteen aihepiiriin liittyen pidetään vuodessa 1-20 kurssia. Sama kurssin voidaan vuoden aikana järjestää useaan kertaan. Kursseille voi osallistua keskimäärin 20 opiskelijaa, mutta isoja yli sadankin hengen kursseja on joskus ohjelmassa. Kustakin kurssista on laadittu esite, josta käyvät selville kurssin aika, kurssipaikka kurssin opettajat ja kurssin sisältö.
+</p>
+
+<p>
+  Kuka tahansa voi tutkia kurssitietoja ja ilmoittautua kurssille. Jotta ilmoittautuminen tulisi voimaan, on varaajan maksettava varausmaksu. Tätä varten varaajalle ilmoitetaan tilinumero ja varaukseen liittyvä viitenumero ja varausmaksun määrä. Jos varaaja erikseen pyytää laskua varausmaksusta, sellainen lähetetään. Varsinainen kurssimaksun laskutus ei kuulu tämän järjestelmän piiriin.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kurssin syöttö ja muokkaus</li>
+  <li>Kurssitarjonnan katselu ja varauksen teko</li>
+  <li>Varauslaskujen kirjoitus - niille jotka ovat sitä pyytäneet tai eivät ole viikon kuluessa vauksesta maksaneet varausmaksua. (valinnainen)</li>
+  <li>Ilmoittautuneiden luettelo</li>
+  <li>Varauksen peruutus yrityksen toimesta, jos maksua ei ole maksettu</li>
+  <li>Varauksen peruutus asiakkaan toimesta</li>
+  <li>Kurssin peruutus</li>
+</ul>
+
+
+
+
+<strong>Projektin työaikaseuranta</strong>
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan seurata projektiin käytettyä työaikaa. Järjestelmää on tarkoitus käyttää ohjelmistotuotantoprojekteissa sekä harjoitustöissä. Projektipäällikkö tai ohjaaja saa järjestelmältä yhteenvetoja käytetystä työajasta viikottain, henkilöittäin ja tehtävälajeittain. Kukin projektiin osallistuva henkilö kirjaa järjestelmän tekemänsä työtunnit, työlajin ja mahdollisen selityksen. Projektin osallistuja saa nähtäväkseen tekemänsä kirjaukset. Hän saa esiin myös itseensä liittyvät yhteenvetoraportit. Projektipäällikkö saa halutessaan käyttöönsä myös tiedot kunkin työntekijään yksityiskohtaisista kirjauksista.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Työaikakirjauksen teko</li>
+  <li>Projektin perustaminen</li>
+  <li>Henkilön liittäminen projektiin</li>
+  <li>Henkilön poistaminen projektista</li>
+  <li>Projektipäällikön raportit</li>
+  <li>Yksityiskohtainen työraportti</li>
+</ul>
+
+
+
+<% partial 'partials/material_sub_sub_heading' do %>
+  Haastavampia aiheita - maksimiarvosana noin 5
+<% end %>
+
+
+
+<strong>Keskustelufoorumi</strong>
+
+<p>
+  Harjoitustyössä tehdään keskustelufoorumi jonkin yhteisön, vaikkpa opiskelijajärjestön sisäiseen käyttöön. Käyttäjä voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai artikkelin iän perusteella. Lukija voi seurata myös vastinepolkua. Oletusarvoisesti lukijalle näytetään kaikki tietty ikää tuoreemmat artikkelit varustettuna informaatiolla siitä onko lukija itse ja ovatko kaikki yhteisön jäsenet jo lukeneet artikkelin. Lukija identifioi aina itsensä ja artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tieto on kaikkien lukijoiden saatavissa.
+</p>
+
+<p>
+  Järjestelmän ylläpitäjällä on oma liittymä, jonka kautta hän ylläpitää järjestön käyttäjien jäsentietoja ja heidän kuulumistan eri ryhmiin, siivota kirjoituskantaa ja määrittellä aiheita, joiden perusteella kirjoituksia voi ryhmitellä.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>  
+  <li>Kirjautuminen</li>
+  <li>Kirjoituksen lisääminen</li>
+  <li>Kirjoitusten näyttäminen eri kriteerein</li>
+  <li>Ryhmän jäsenen lisääminen, muokkaaminen ja poistaminen</li>
+  <li>Vastineen laatiminen ja muokkaus</li>
+  <li>Kirjoitusten poistaminen</li>
+  <li>Aiheiden määrittely, muokkaus ja poisto</li>
+</ul>
+
+
+<strong>Lääkäriaseman työvuorolista</strong>
+
+
+<p>
+  Tehtävänä on laatia järjestelmä, jolla voidaan laatia lääkäriaseman työvuorolistoja. Lääkäriaseman henkilöstö jaetaan kolmeen luokkaan: lääkärit, sairaanhoitajat ja perushoitajat. Myös aseman aukioloajat jaetaan tarvittavan henkilöstövahvuuden mukaan eri kiireellisyysluokkiin. Jokaiselle kiireellisyysluokalle määritellään minimivahvuus eli kuinka monta kunkin henkilöstöluokan työntekijää täytyy olla töissä. Kuitenkin laskettessa minimivahvuutta ylempi voi korvata alemman eli lääkäri voi olla sairaanhoitaja tai perushoitaja, ja sairaanhoitaja voi olla myös perushoitaja. Jokainen aseman aukiolotunti kuuluu johonkin kiireellisyysluokkaan.
+</p>
+
+<p>
+  Huom. järjestelmä saa hyväksyä vain sellaiset tyvuorolistat, jotka täyttävät vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijääällä on määritelty päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
+</p>
+
+<p>
+  Toimintoja:
+</p>
+
+<ul>
+  <li>Kirjautuminen</li>
+  <li>Kiireellisyysluokkien teko (ja muutos)</li>
+  <li>Henkilöstövahvuuskalenterin teko (ja muutos)</li>
+  <li>Työvuorolistan teko (ja muutos)</li>
+  <li>Henkilöökohtaisen työvuorolistan listaus</li>
+  <li>Työvuorolistan listaus</li>
+  <li>Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)</li>
+  <li>Työntekijään tekemien tuntien listaus kiireellisyysluokittain</li>
+  <li>Työvuorolistan ylimiehityksen raportointi</li>
+</ul>
+
+
+<% partial 'partials/material_sub_heading' do %>
+  Kun olet valinnut aiheen..
+<% end %>
+
+<p>
+  Kun olet valinnut aiheen, kirjoita siitä kuvaus tai mukauta aiheen kuvausta itsellesi sopivaksi.
+</p>
+
+<p>
+  Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen.
+</p>
+
+<p>
+  Kun olet tehnyt repositorion sekä luonut aihekuvauksen, lisää aihe labtooliin. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
 </p>
