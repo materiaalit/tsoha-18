@@ -101,26 +101,27 @@
 <% end %>
 
 <p>
-  Luodaan ensin Python-virtuaaliympäristö sovellustamme varten komennolla <code>python3 -m venv <em>nimi</em></code>. Kutsutaan sovellusta nimellä <code>demo</code>. 
+  Luodaan ensin hakemisto sovellustamme varten ja luodaan sen sisälle Python-virtuaaliympäristö komennolla <code>python3 -m venv <em>venv</em></code>. Kutsutaan sovellusta nimellä <code>demo</code>. 
 </p>
 
 <% partial 'partials/terminal' do %>
   $ ls
-  $ python3 -m venv demo
+  $ mkdir demo
   $ ls
   demo
+  $ cd demo
+  $ python3 -m venv venv
+  $ ls
+  venv
   $ 
 <% end %>
 
 <p>
-  Nyt käytössämme on kansio <code>demo</code>. Mennään kansioon ja tarkastellaan sen sisältöä.
+  Nyt luomallamme virtuaaliympäristöllä on kansio <code>venv</code>. Tarkastellaan sen sisältöä.
 </p>
 
 <% partial 'partials/terminal' do %>
-  $ ls
-  demo
-  $ cd demo
-  demo$ ls
+  $ ls venv
   bin  include  lib  lib64  pyvenv.cfg  share
   $
 <% end %>
@@ -130,16 +131,25 @@
 </p>
 
 <p>
+  Kun haluamme ottaa luodun virtuaalisen Python-ympäristön käyttöön, aktivoimme sen komennolla <code>source venv/bin/activate</code>. Muuttuneesta komentokehoitteesta näkee että virtuaaliympäristö on aktiivinen.
+</p>
+
+<% partial 'partials/terminal' do %>
+  $ source venv/bin/activate
+  (venv) ~/demo$
+<% end %>
+
+<p>
   Haluamme lisätä käyttöömme Flask-kirjaston. Tämä onnistuu kansiossa <code>bin</code> olevalla <code>pip</code>-kemonnolla.
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ bin/pip install Flask
+  (venv) ~/demo$ pip install Flask
   ....
   ....
   You are using pip version 8.1.1, however version 9.0.1 is available.
   You should consider upgrading via the 'pip install --upgrade pip' command.
-  $ 
+  (venv) ~/demo$ 
 <% end %>
 
 <p>
@@ -147,7 +157,7 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ bin/pip install --upgrade pip
+  (venv) ~/demo$ pip install --upgrade pip
   Collecting pip
     Using cached pip-9.0.1-py2.py3-none-any.whl
       Installing collected packages: pip
@@ -155,9 +165,9 @@
     Uninstalling pip-8.1.1:
       Successfully uninstalled pip-8.1.1
   Successfully installed pip-9.0.1
-  demo$ ls
+  (venv) ~/demo$ ls venv
   bin  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$
+  (venv) ~/demo$
 <% end %>
 
 <p>
@@ -187,10 +197,10 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
-  demo$
+  (venv) ~/demo$ ls
+  hello.py  venv
+  (venv) ~/demo$ python3 hello.py
+  (venv) ~/demo$
 <% end %>
 
 <p>
@@ -218,9 +228,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
+  (venv) ~/demo$ ls
+  hello.py  venv
+  (venv) ~/demo$ python3 hello.py
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 <% end %>
 
@@ -243,9 +253,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
+  (venv) ~/demo$ ls
+  hello.py  venv
+  demo$ python3 hello.py
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
   127.0.0.1 - - [29/Feb/2018 18:07:31] "GET / HTTP/1.1" 200 -
   127.0.0.1 - - [29/Feb/2018 18:07:31] "GET /favicon.ico HTTP/1.1" 404 -
@@ -265,9 +275,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
+  (venv) ~/demo$ ls
+  hello.py  venv
+  (venv) ~/demo$ python3 hello.py
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 <% end %>
 
@@ -306,9 +316,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
+  (venv) ~/demo$ ls
+  hello.py  venv
+  (venv) ~/demo$ python3 hello.py
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
   * Restarting with stat
   * Debugger is active!
@@ -338,9 +348,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  demo$ ls
-  bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
-  demo$ bin/python3 hello.py
+  (venv) ~/demo$ ls
+  hello.py  venv
+  (venv) ~/demo$ bin/python3 hello.py
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
   * Restarting with stat
   * Debugger is active!
