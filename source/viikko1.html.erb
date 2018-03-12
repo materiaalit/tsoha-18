@@ -113,8 +113,8 @@
   $ ls
   demo
   $ cd demo
-  $ python3 -m venv venv
-  $ ls
+  ~/demo$ python3 -m venv venv
+  ~/demo$ ls
   venv
   $ 
 <% end %>
@@ -124,7 +124,7 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  $ ls venv
+  ~/demo$ ls venv
   bin  include  lib  lib64  pyvenv.cfg  share
   $
 <% end %>
@@ -138,7 +138,7 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  $ source venv/bin/activate
+  ~/demo$ source venv/bin/activate
   (venv) ~/demo$
 <% end %>
 
@@ -1019,6 +1019,7 @@
   remote: Verifying deploy... done.
   To https://git.heroku.com/tsoha-python-demo.git
   * [new branch]      master -> master
+  (venv) ~/demo$
 <% end %>
 
 <p>
@@ -1042,4 +1043,8 @@
 
 <p>
   Kun olet luonut aihekuvauksen, tehnyt repositorion, lisännyt repositorioon aihekuvauksen sekä hello.py -sovelluksen, ja lisännyt sovelluksen herokuun, lisää lopulta aihe labtooliin. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
+</p>
+
+<p>
+  Labtoolin osoite on <a href="https://tsoha-labtool.herokuapp.com/" target="_blank" norel>https://tsoha-labtool.herokuapp.com/</a>.
 </p>
