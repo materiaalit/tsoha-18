@@ -336,7 +336,7 @@ hello.py  venv
 
 <pre class="terminal">(venv) ~/demo$ ls
 hello.py  venv
-demo$ python3 hello.py
+(venv) ~/demo$ python3 hello.py
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 127.0.0.1 - - [29/Feb/2018 18:07:31] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [29/Feb/2018 18:07:31] "GET /favicon.ico HTTP/1.1" 404 -
@@ -427,7 +427,7 @@ if __name__ == "__main__":
 
 <pre class="terminal">(venv) ~/demo$ ls
 hello.py  venv
-(venv) ~/demo$ bin/python3 hello.py
+(venv) ~/demo$ python3 hello.py
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 * Restarting with stat
 * Debugger is active!
@@ -466,18 +466,18 @@ hello.py  venv
   Jatketaan aiemmin luodun sovelluksen parissa.
 </p>
 
-<pre class="terminal">demo$ ls
-bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  venv
 </pre>
 
 <p>
   Luodaan HTML-näkymiä varten kansio nimeltä <code>templates</code> ja mennään kansioon.
 </p>
 
-<pre class="terminal">demo$ mkdir templates
-demo$ cd templates
-demo/templates$ ls
-demo/templates$
+<pre class="terminal">(venv) ~/demo$ mkdir templates
+(venv) ~/demo$ cd templates
+(venv) ~/demo/templates$ ls
+(venv) ~/demo/templates$
 </pre>
 
 <p>
@@ -537,19 +537,19 @@ demo/templates$
   Nyt sovelluksemme kansion <code>templates</code> sisällön pitäisi olla seuraavanlainen.
 </p>
 
-<pre class="terminal">demo/templates$ ls
+<pre class="terminal">(venv) ~/demo/templates$ ls
 index.html  layout.html
-demo/templates$
+(venv) ~/demo/templates$
 </pre>
 
 <p>
   Palataan tiedostohierarkiassa aiempaan kansioon.
 </p>
 
-<pre class="terminal">demo/templates$ ls
+<pre class="terminal">(venv) ~/demo/templates$ ls
 index.html  layout.html
-demo/templates$ cd ..
-demo$
+(venv) ~/demo/templates$ cd ..
+(venv) ~/demo$
 </pre>
 
 <p>
@@ -575,9 +575,9 @@ if __name__ == "__main__":
   Käynnistetään sovellus.
 </p>
 
-<pre class="terminal">demo$ ls
-bin  hello.py  include  lib  lib64  pip-selfcheck.json  pyvenv.cfg  share  templates
-demo$ bin/python3 hello.py 
+<pre class="terminal">(venv) ~/demo$ ls
+hello.py  templates  venv
+(venv) ~/demo$ python3 hello.py 
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 * Restarting with stat
 * Debugger is active!
@@ -719,7 +719,7 @@ if __name__ == "__main__":
   Mikäli sovellus ei ole käynnissä, käynnistetään se.
 </p>
 
-<pre class="sh_python code-highlight"><code>demo$ bin/python3 hello.py 
+<pre class="sh_python code-highlight"><code>(venv) ~/demo$ python3 hello.py 
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 * Restarting with stat
 * Debugger is active!
@@ -878,7 +878,7 @@ if __name__ == "__main__":
   <li>Kiireellisyysluokkien teko (ja muutos)</li>
   <li>Henkilöstövahvuuskalenterin teko (ja muutos)</li>
   <li>Työvuorolistan teko (ja muutos)</li>
-  <li>Henkilöökohtaisen työvuorolistan listaus</li>
+  <li>Henkilökohtaisen työvuorolistan listaus</li>
   <li>Työvuorolistan listaus</li>
   <li>Työntekijäkohtainen työraportti (tehdäyt tunnit tietyllä aikavälillä)</li>
   <li>Työntekijään tekemien tuntien listaus kiireellisyysluokittain</li>
