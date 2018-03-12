@@ -24,3 +24,18 @@ pre.sample-output {
     margin: 1em 0px 1em 0px;
     border-left: 3px solid #ccc;
 }
+
+pre.terminal {
+    color: #fff;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    word-wrap: normal;
+    white-space: pre-wrap;
+    overflow: auto;
+    position: relative;
+    display: block;
+    margin: 1em 0px 1em 0px;
+    border-left: 3px solid #000;
+}
