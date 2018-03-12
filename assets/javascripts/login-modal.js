@@ -30,13 +30,13 @@ class LoginModal {
   }
 
   afterLogin() {
-    initQuiznator();
-    initStudentDashboard();
+    // initQuiznator();
+    // initStudentDashboard();
 
     this.initPheromones();
     this.initLogger();
 
-    this.getUserGroup();
+    // this.getUserGroup();
   }
 
   getUserGroup() {
@@ -118,16 +118,12 @@ class LoginModal {
 
     const username = this.loginUsernameNode.val();
     const password = this.loginPasswordNode.val();
-    const courseNode = this.loginFormNode.find('input[name="tmcLoginCourse"]:checked');
 
-    if(courseNode.length === 0) {
-      this.showError('Et valinnut kurssia');
-    } else if(!username || !password) {
+
+    if (!username || !password) {
       this.showError('Käyttäjätunnus tai salasana puuttuu');
     } else {
-      const course = courseNode.val();
-
-      store.set('tmc.course', course);
+      store.set('tmc.course', 'tsoha-18');
 
       client.authenticate({ username: username, password: password })
         .then(response => {
