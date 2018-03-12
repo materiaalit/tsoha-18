@@ -895,12 +895,223 @@ if __name__ == "__main__":
   Kun olet valinnut aiheen, kirjoita siitä kuvaus tai mukauta aiheen kuvausta itsellesi sopivaksi.
 </p>
 
+<h3 class="material-heading">
+    Luo aiheelle github-repositorio
+
+</h3>
+
 <p>
   Luo github-tunnuksesi alle uusi repositorio. Aseta repositorion nimeksi aiheesi nimi. Luo tämän jälkeen repositorion juureen tiedosto <code>README.md</code>, johon kirjoitat aihekuvauksen.
 </p>
 
+<h3 class="material-heading">
+    Siirrä sovellus Githubiin
+
+</h3>
+
 <p>
-  Kun olet tehnyt repositorion sekä luonut aihekuvauksen, lisää aihe labtooliin. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
+  Lisää ensin projektin kansioon <code>.gitignore</code>-tiedosto, johon lisätään versionhallinnasta poisjätettävät tiedostot. Emme halua, että virtuaaliympäristön sisältämät binäärit ovat versionhallinnassa, joten lisätään tiedostoon rivi "venv". Tämä tarkoittaa sitä, että kansiota <code>venv</code> ei lisätä versionhallintaan.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ echo "venv" > .gitignore
+(venv) ~/demo$ cat .gitignore
+venv
+(venv) ~/demo$
+</pre>
+
+<p>
+  Saat luomasi github-repositorion osoitteen selville Githubista. Tässä oletetaan, että osoite on <code>https://github.com/avihavai/tsoha.git</code>.
+</p>
+
+<p>
+  Luodaan projektikansiolle git-versionhallinta komennolla <code>git init</code>. Tämä luo mahdollisuuden projektin versiointiin ja luo kansioon <code>.git</code>-nimisen kansion.
+</p>
+
+
+<pre class="terminal">(venv) ~/demo$ git init
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Lisätään githubissa oleva repositorio kansion paikallisen versionhallinnan etäpisteeksi. Projektin osoite löytyy githubista (se on tyypillisesti muotoa <code>https://github.com/käyttäjätunnus/projektin-nimi.git</code>.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ git remote add origin <em>github-projektin osoite</em>
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Lisätään tiedostot githubiin.
+</p>
+
+
+<pre class="terminal">(venv) ~/demo$ git add .
+(venv) ~/demo$ git push -u origin master
+..-
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Nyt projektin lähdekoodit löytyvät githubista.
+</p>
+
+
+<h3 class="material-heading">
+    Siirrä sovellus Herokuun
+
+</h3>
+
+<p>
+  Sovelluksen Herokuun siirtämistä varten sovellukselle tulee lisätä web-palvelin, jota Heroku osaa käyttää. Valitsemme käyttöön <a href="http://gunicorn.org/" target="_blank" norel>Gunicorn</a>-palvelimen.
+</p>
+
+
+<pre class="terminal">~/demo$ source venv/bin/activate
+(venv) ~/demo$ pip install gunicorn
+Collecting gunicorn
+Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
+100% |████████████████████████████████| 112kB 2.0MB/s 
+Installing collected packages: gunicorn
+Successfully installed gunicorn-19.7.1
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Jäädytetään seuraavaksi projektin tämän hetkiset riippuvuudet, jotta Heroku tietää mitä riippuvuuksia tulee asentaa. Tämä onnistuu komennolla <code>pip freeze</code>. Komennon tulostus ohjataan tiedostoon <code>requirements.txt</code>. Alla tehdään sekä jäädytys että tulostetaan riippuvuudet sisältävän tiedoston <code>requirements.txt</code> sisältö.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ pip freeze &gt; requirements.txt
+(venv) ~/demo$ cat requirements.txt
+click==6.7
+Flask==0.12.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+pkg-resources==0.0.0
+Werkzeug==0.14.1
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Tiedostossa oleva rivi <code>pkg-resources==0.0.0</code> <a href="https://stackoverflow.com/questions/40670602/could-not-find-a-version-that-satisfies-the-requirement-pkg-resources-0-0-0" target="_blank" norel>aiheuttaa ongelmia Herokussa</a>, joten poistetaan se toistaiseksi. Tiedoston <code>requirements.txt</code> sisältö on tämän jälkeen seuraava.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ cat requirements.txt
+click==6.7
+Flask==0.12.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+Werkzeug==0.14.1
+(venv) ~/demo$ 
+</pre>
+
+
+<p>
+  Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ echo "web: gunicorn hello:app" > Procfile
+(venv) ~/demo$ cat Procfile
+web: gunicorn hello:app
+(venv) ~/demo$
+</pre>
+
+<p>
+  Luodaan tämän jälkeen sovellukselle paikka Herokuun. Tässä oletuksena on, että käytössä on Herokun käyttäjätunnus sekä Herokun työvälineet komentoriville (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" norel>Heroku CLI</a>). Paikan luominen tapahtuu komennolla <code>heroku create</code>, jota seuraa toivottu sovelluksen nimi. Sovelluksen nimen tulee olla uniikki, eli alla oleva <code>tsoha-python-demo</code> tulee vaihtaa omaa sovellusta kuvaavaksi. Mikäli nimen jättää pois, Heroku luo satunnaisen nimen sovellukselle.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ heroku create tsoha-python-demo
+Creating ⬢ tsoha-python-demo... done
+https://tsoha-python-demo.herokuapp.com/ | https://git.heroku.com/tsoha-python-demo.git
+(venv) ~/demo$
+</pre>
+
+<p>
+  Nyt sovellukselle on paikka Herokussa. Lisätään vielä paikalliseen versionhallintaan tieto Herokusta.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ git remote add heroku https://git.heroku.com/tsoha-python-demo.git
+(venv) ~/demo$ 
+</pre>
+
+<p>
+  Ja lähetetään projekti Herokuun.
+</p>
+
+<pre class="terminal">(venv) ~/demo$ git add .
+(venv) ~/demo$ git commit -m "Initial commit"
+(venv) ~/demo$ git push heroku master
+Counting objects: 13, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 1.79 KiB | 0 bytes/s, done.
+Total 13 (delta 2), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Python app detected
+remote: -----> Installing python-3.6.4
+remote: -----> Installing pip
+remote: -----> Installing requirements with pip
+remote:        Collecting click==6.7 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 1))
+remote:          Downloading click-6.7-py2.py3-none-any.whl (71kB)
+remote:        Collecting Flask==0.12.2 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 2))
+remote:          Downloading Flask-0.12.2-py2.py3-none-any.whl (83kB)
+remote:        Collecting gunicorn==19.7.1 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 3))
+remote:          Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
+remote:        Collecting itsdangerous==0.24 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 4))
+remote:          Downloading itsdangerous-0.24.tar.gz (46kB)
+remote:        Collecting Jinja2==2.10 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 5))
+remote:          Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
+remote:        Collecting MarkupSafe==1.0 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 6))
+remote:          Downloading MarkupSafe-1.0.tar.gz
+remote:        Collecting Werkzeug==0.14.1 (from -r /tmp/build_eb15306f4a3962d45ca30ea90e9b4cb6/requirements.txt (line 7))
+remote:          Downloading Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+remote:        Installing collected packages: click, itsdangerous, Werkzeug, MarkupSafe, Jinja2, Flask, gunicorn
+remote:          Running setup.py install for itsdangerous: started
+remote:            Running setup.py install for itsdangerous: finished with status 'done'
+remote:          Running setup.py install for MarkupSafe: started
+remote:            Running setup.py install for MarkupSafe: finished with status 'done'
+remote:        Successfully installed Flask-0.12.2 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 click-6.7 gunicorn-19.7.1 itsdangerous-0.24
+remote: 
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 42.7M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://tsoha-python-demo.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/tsoha-python-demo.git
+* [new branch]      master -> master
+</pre>
+
+<p>
+  Nyt sovellus on tarkasteltavana osoitteessa <a href="https://tsoha-python-demo.herokuapp.com/" target="_blank" norel>https://tsoha-python-demo.herokuapp.com/</a>. Osoite on toki riippuvainen sovellukselle valitusta nimestä.
+</p>
+
+<p>
+  Sovellus on myös hyvä lähettää githubiin, sillä siihen on tullut päivityksiä.
+</p>
+
+
+<pre class="terminal">(venv) ~/demo$ git push origin master
+(venv) ~/demo$ 
+</pre>
+
+
+<h3 class="material-heading">
+    Palauta työ labtooliin
+
+</h3>
+
+<p>
+  Kun olet luonut aihekuvauksen, tehnyt repositorion, lisännyt repositorioon aihekuvauksen sekä hello.py -sovelluksen, ja lisännyt sovelluksen herokuun, lisää lopulta aihe labtooliin. Olet nyt sitoutunut suorittamaan harjoitustyön tässä periodissa.
 </p>
 
         </div>
