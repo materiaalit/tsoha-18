@@ -758,6 +758,19 @@
 <% end %>
 
 <p>
+  Parametrit voi toisaalta myös nimetä funktiokutsun yhteydessä. Alla edellinen esimerkki uudestaan toimivana.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+  tulosta(tulostettava="Heippa")
+<% end %>
+
+<% partial 'partials/sample_output' do %>
+  Hei
+<% end %>
+
+
+<p>
   Vaikka kaikki Pythonin muuttujat ovat olioita, on Pythonissa silti näkyvissä Javan kaltainen käyttäytyminen alkeis- ja viittaustyyppisiin muuttujiin liittyen. Käytännössä Pythonin luvut ovat muuttumattomia (immutable), ja niiden muuttaminen luo uuden olion.
 </p>
 
