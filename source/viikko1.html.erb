@@ -759,7 +759,7 @@
 <strong>Keskustelufoorumi</strong>
 
 <p>
-  Harjoitustyössä tehdään keskustelufoorumi jonkin yhteisön, vaikkpa opiskelijajärjestön sisäiseen käyttöön. Käyttäjä voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai artikkelin iän perusteella. Lukija voi seurata myös vastinepolkua. Oletusarvoisesti lukijalle näytetään kaikki tietty ikää tuoreemmat artikkelit varustettuna informaatiolla siitä onko lukija itse ja ovatko kaikki yhteisön jäsenet jo lukeneet artikkelin. Lukija identifioi aina itsensä ja artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tieto on kaikkien lukijoiden saatavissa.
+  Harjoitustyössä tehdään keskustelufoorumi jonkin yhteisön, vaikkapa opiskelijajärjestön sisäiseen käyttöön. Käyttäjä voi lukea järjestelmän tallennettuja kirjoituksia ja lisätä tietokantaan uusia kirjoituksia, jotka voivat olla myös vastineita aiempiin kirjoituksiin. Kirjoituksia voi hakea kirjoittajan nimen tai aiheen tai artikkelin iän perusteella. Lukija voi seurata myös vastinepolkua. Oletusarvoisesti lukijalle näytetään kaikki tietty ikää tuoreemmat artikkelit varustettuna informaatiolla siitä onko lukija itse ja ovatko kaikki yhteisön jäsenet jo lukeneet artikkelin. Lukija identifioi aina itsensä ja artikkeleihin liitetään tieto henkilöistä jotka ovat lukeneet ne. Tämä tieto on kaikkien lukijoiden saatavissa.
 </p>
 
 <p>
@@ -789,7 +789,7 @@
 </p>
 
 <p>
-  Huom. järjestelmä saa hyväksyä vain sellaiset tyvuorolistat, jotka täyttävät vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijääällä on määritelty päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
+  Huom. järjestelmä saa hyväksyä vain sellaiset työvuorolistat, jotka täyttävät vaaditut henkilöstövahvuudet. Lisäksi jokaisella työntekijällä on määritelty päivä- tai viikkotuntimäärä, jonka ylitykset järjestelmään täytyy estää.
 </p>
 
 <p>
@@ -1027,15 +1027,17 @@
 </p>
 
 <p>
-  Sovellus on myös hyvä lähettää githubiin, sillä siihen on tullut päivityksiä.
+  Sovellus on myös hyvä lähettää Githubiin, sillä siihen on tullut päivityksiä.
 </p>
-
 
 <% partial 'partials/terminal' do %>
   (venv) ~/demo$ git push origin master
   (venv) ~/demo$ 
 <% end %>
 
+<p>
+  Viikko- ja loppupalautusten arvioinnit perustuvat github-repositoriossasi olevaan koodiin, joten kannattaa myös harkita Herokun automaattisen <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">github-integraation</a> ottamista käyttöön. Tällöin sovellusta ei päivitetä itse Herokuun, vaan Heroku hakee käyttöön automaattisesti kaikki Githubiin talletetut päivitykset sovellukseen.
+</p>
 
 <% partial 'partials/material_sub_sub_heading' do %>
   Palauta työ labtooliin
