@@ -30,7 +30,7 @@ class LoginModal {
   }
 
   afterLogin() {
-    // initQuiznator();
+    initQuiznator();
     // initStudentDashboard();
 
     this.initPheromones();
