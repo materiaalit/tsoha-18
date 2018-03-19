@@ -31,10 +31,13 @@
       Projektissa on näkymät (html-sivut) tiedon listaamiseen, tiedon lisäämiseen sekä tiedon päivittämiseen (mikäli käyttötapausten kannalta oleellista). HTML-sivujen tarjoama toiminnallisuus yhteydessä Flaskin kautta tietokantaan.
     </li>
     <li>
-      Dokumentaatio kehittyy. 
+      Dokumentaatio kehittyy.
       <ul>
 	<li>
 	  Projektin päädokumentti (juuren README.md) sisältää aihekuvauksen.
+	</li>
+	<li>
+	  Projektin päädokumentti (juuren README.md) sisältää linkin Herokussa toimivaan sovellukseen.
 	</li>
 	<li>	  
 	  Dokumentaatiokansiossa sovelluksen toiminnallisuuden kannalta oleelliset käyttötapaukset tai user storyt (kts. <a href="https://www.mountaingoatsoftware.com/agile/user-stories" target="_blank" norel>esimerkkejä</a>).
@@ -44,6 +47,9 @@
 	</li>
 	<li>
 	  Projektin päädokumentti (juuren README.md) sisältää linkit käyttötapauksiin tai user storyihin sekä tietokantakaaviohahmotelmaan.
+	</li>
+	<li>
+	  Voit katsoa vihjeitä README.md:n muotoiluun esimerkiksi <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">täältä.</a>
 	</li>
       </ul>
     </li>
@@ -785,7 +791,19 @@ if __name__ == '__main__':
 <% end %>
 
 <p>
-  Näyttää suhteellisen tutulta tietokantojen perusteet -kurssia ajatellen. Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
+  Näyttää suhteellisen tutulta tietokantojen perusteet -kurssia ajatellen.
+</p>
+
+<p>
+  Koska SQLAlchemy luo tarvittaessa tietokantatiedoston automaattisesti, ja tietokannan eri versioiden yhdistäminen gitillä on hankalaa, lisäämme myös <code>tasks.db</code>-tiedoston .gitignore-tiedostoon.
+</p>
+
+<% partial 'partials/terminal' do %>
+  (venv) ~/todosovellus$ echo "tasks.db" >> .gitignore
+<% end %>
+
+<p>
+ Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
 </p>
 
 
