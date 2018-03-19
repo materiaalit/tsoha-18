@@ -320,8 +320,17 @@ if __name__ == '__main__':
   (venv) ~/todosovellus/application/templates$ 
 <% end %>
 
+
+<% partial 'partials/hint', locals: { name: 'Kansio <code>templates</code>' } do %>
+  
+  <p>
+    Huomaathan, että kansion nimen tulee olla täsmälleen <code>templates</code>. Tämä liittyy ns. <a href="https://en.wikipedia.org/wiki/Convention_over_configuration" target="_blank" norel>convention over configuration</a> -ajatteluun -- Flask olettaa, että näkymät löytyvät kansiosta <code>templates</code>. Mikäli päätät käyttää jotain toista kansiota näkymille, joudut sekä muokkamaan <a href="http://flask.pocoo.org/docs/0.12/api/#application-object" target="_blank" norel>sovelluksen käynnistyskomentoa</a> että dokumentoimaan kansion nimen tuleville sukupolville.
+  </p>
+    
+<% end %>
+
 <p>
-  Luodaan kansioon tiedostot <code>layout.html</code>, jota käytetään sivun ulkoasun pohjana, ja <code>index.html</code>, joka toimii sivuston pääsivuna.
+  Luodaan kansioon <code>templates</code> tiedostot <code>layout.html</code>, jota käytetään sivun ulkoasun pohjana, ja <code>index.html</code>, joka toimii sivuston pääsivuna.
 </p>
 
 <p>
