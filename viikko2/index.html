@@ -134,9 +134,14 @@
 	  Projektin päädokumentti (juuren README.md) sisältää linkit käyttötapauksiin tai user storyihin sekä tietokantakaaviohahmotelmaan.
 	</li>
       </ul>
-
-      <li>Commit-viestit githubiin järkeviä.</li>
-      <li>Githubissa ei turhia tiedostoja (virtuaaliympäristöä kuvaava kansio, cachet, käyttöjärjestelmäkohtaiset tiedot..).</li>
+    </li>
+    
+    <li>
+      Commit-viestit githubiin järkeviä.
+    </li>
+    <li>
+      Githubissa ei turhia tiedostoja (virtuaaliympäristöä kuvaava kansio, cachet, käyttöjärjestelmäkohtaiset tiedot..).
+    </li>
   </ul>
   
   
@@ -153,6 +158,12 @@
     Hieman isomman projektin rakenne
 
 </h1>
+
+<p>
+  <em>
+    Huom! Tässä pohjan rakennus lähtee tyhjästä. Kun seuraat esimerkkiä, mieti miten saat saman tehtyä jo olemassaolevalle projektipohjallesi -- sen sijaan, että teet uusia tiedostoja, siirtelet todennäköisesti asioita paikasta toiseen.
+  </em>
+</p>
 
 <p>
   Luodaan ensin "walking skeleton" eli toimiva lähes tyhjä projektipohja. Kun käytössämme on toimiva pohja, voimme aloittaa toiminnallisuuden lisäämisen. Tämä osa kertaa vahvasti viikon 1 materiaalia, mutta mukana on uutta tietoa esimerkiksi moduulien (kansioiden) hallintaan.
@@ -572,8 +583,18 @@ Werkzeug==0.14.1
 </pre>
 
 <p>
-  Sovelluksen runko on valmis.
+  Sovelluksen runko on lähes valmis. Mutta...
 </p>
+
+<p>
+  Sovelluksessa saattaa olla ohjelmointiympäristöön liittyviä tiedostoja, jotka kannattaa jättää pois versionhallinnasta. Osoitteessa <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank" norel>https://github.com/github/gitignore/blob/master/Python.gitignore</a> on hyvä lista <code>.gitignore</code>-tiedostoon lisättävistä asioista.
+</p>
+
+<p>
+  Laajemmin ottaen voit ajatella versionhallinnassa säilöttävien asioiden lisäämisestä seuraavasti: "oletko luonut tiedoston tai kansion? Jos et, tiedosto/kansio on autogeneroitu ja kuuluu gitignoreen".
+</p>
+
+<p> 
 
 
 <h1 class="material-heading">
@@ -1219,7 +1240,7 @@ Werkzeug==0.14.1
 </pre>
 
 <p>
-  Nyt sovelluksen voi taas siirtää Githubiin ja Herokuun. Sovelluksessa saattaa olla ohjelmointiympäristöön liittyviä tiedostoja, jotka kannattaa jättää pois versionhallinnasta. Osoitteessa <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank" norel>https://github.com/github/gitignore/blob/master/Python.gitignore</a> on hyvä lista <code>.gitignore</code>-tiedostoon lisättävistä asioista.
+  Nyt sovelluksen voi taas siirtää Githubiin ja Herokuun. Muistathan varmistaa, että versionhallintaan ei päädy turhia tiedostoja, ja että sinne mahdollisesti päätyneet turhat tiedostot poistetaan.
 </p>
 
 <p>
