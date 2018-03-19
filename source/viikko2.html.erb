@@ -785,7 +785,19 @@ if __name__ == '__main__':
 <% end %>
 
 <p>
-  Näyttää suhteellisen tutulta tietokantojen perusteet -kurssia ajatellen. Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
+  Näyttää suhteellisen tutulta tietokantojen perusteet -kurssia ajatellen.
+</p>
+
+<p>
+  Koska SQLAlchemy luo tarvittaessa tietokantatiedoston automaattisesti, ja tietokannan eri versioiden yhdistäminen gitillä on hankalaa, lisäämme myös <code>tasks.db</code>-tiedoston .gitignore-tiedostoon.
+</p>
+
+<% partial 'partials/terminal' do %>
+  (venv) ~/todosovellus$ echo "tasks.db" >> .gitignore
+<% end %>
+
+<p>
+ Yritetään seuraavaksi luoda toiminnallisuus tiedon tietokantaan lisäämiseen.
 </p>
 
 
