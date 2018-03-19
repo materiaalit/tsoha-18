@@ -528,6 +528,29 @@ from application import views
 
 <img src="../img/hello-world-16eec7c2.png" alt="Hello world!" />
 
+<p>
+  &nbsp;
+</p>
+
+
+<div class="hint">
+  <div class="hint__header">
+    <i class="fa fa-info-circle hint__icon"></i>Syklinen riippuvuus
+  </div>
+
+  <div class="hint__body">
+    
+  <p>
+    Yllä olevassa esimerkissä luodaan syklinen riippuvuus, eli tilanne, missä komponentit riippuvat toisistaan. Yllä siis <code>__init__.py</code> riippuu kansion tiedostosta <code>views.py</code>, ja toisaalta <code>views.py</code> on riippuvainen tiedostosta <code>__init__.py</code>.
+  </p>
+
+  <p>
+    Yleisesti ottaen tämä on paha tilanne, mutta tässä tapauksessa ok. Emme käytä <code>views.py</code>-tiedostoa <code>__init__.py</code>-tiedostossa, vaan varmistamme vain että kyseinen tiedosto on ladattu käyttöön.
+  </p>
+
+
+  </div>
+</div>
 
 
 <h2 class="material-heading">
