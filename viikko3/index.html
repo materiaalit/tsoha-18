@@ -105,19 +105,19 @@
       Sovelluksessa käytetyt lomakkeet validoivat syötetyn tiedon.
     </li>
     <li>
-      Sovelluksessa mahdollisuus rekisteröitymiseen.
+      Sovelluksessa on mahdollisuus rekisteröitymiseen.
     </li>
     <li>
-      Sovelluksessa mahdollisuus kirjautumiseen.
+      Sovelluksessa on mahdollisuus kirjautumiseen.
     </li>
     <li>
-      Sovelluksessa ainakin kaksi tietokantataulua.
+      Sovelluksessa on ainakin kaksi tietokantataulua.
     </li>
     <li>
       Ainakin yhden tietokantataulun tietoihin liittyy täysi CRUD-toiminnallisuus sovelluksen kautta (kaikkien rivien listaus, yhden rivin tietojen näyttö, yhden rivin tietojen muokkaus, yhden rivin tietojen poisto)
     </li>
     <li>
-      Githubissa issuet päällä, jotta koodikatselmointi on mahdollista.
+      Githubissa on issuet päällä, jotta koodikatselmointi on mahdollista.
     </li>
     <li>
       Commit-viestit ovat yhä järkeviä ja kuvaavat tehtyjä lisäyksiä ja/tai muutoksia.
@@ -744,7 +744,7 @@ def auth_login():
 </code></pre>
 
 <p>
-  Käynnistetään sovellus ja tarkastellaan lomakkeen toimintaa.Tarkastellaan lomakkeen toimintaa.
+  Käynnistetään sovellus ja tarkastellaan lomakkeen toimintaa. Tarkastellaan lomakkeen toimintaa.
 </p>
 
 <img src="../img/loginform-not-found-c7f32895.png" alt="Lomaketta ei löydy."/>
@@ -1117,7 +1117,7 @@ def tasks_create():
 
 
 <h2 class="material-heading">
-    Käyttäjään liittyvät tethtävät
+    Käyttäjään liittyvät tehtävät
 
 </h2>
 
@@ -1357,7 +1357,7 @@ HEROKU: 1
 </pre>
 
 <p>
-  Nyt sovellukselle on Herokussa tietokanta. Heroku antaa tietokannan ympäristömuuttujassa <code>DATABASE_URL</code>. Muokataan sovelluksen <code>__init__.py</code>-tiedostoa siten, että Herokussa ollessamme käytetään Herokun tietokantaan, mulloin omaa tietokantaamme. Tämän lisäksi tietokantataulujen luominen tapahtuu vain kerran (try-catch).
+  Nyt sovellukselle on Herokussa tietokanta. Heroku antaa tietokannan ympäristömuuttujassa <code>DATABASE_URL</code>. Muokataan sovelluksen <code>__init__.py</code>-tiedostoa siten, että Herokussa ollessamme käytetään Herokun tietokantaan, muulloin omaa tietokantaamme. Tämän lisäksi tietokantataulujen luominen tapahtuu vain kerran (try-catch).
 </p>
 
 
@@ -1452,7 +1452,7 @@ id | date_created | date_modified |    name     | username | password
 </p>
 
 <p>
-  Kun kokeilemme keskustelun ehdostusta, eli muokkaamme tiedostoa <code>Procfile</code> siten, että käynnistyskomennon lopussa on merkkijono <code>--preload</code>, sovellus toimii toivotulla tavalla.
+  Kun kokeilemme keskustelussa mainittua ehdotusta, eli muokkaamme tiedostoa <code>Procfile</code> siten, että käynnistyskomennon lopussa on merkkijono <code>--preload</code>, sovellus toimii toivotulla tavalla.
 </p>
 
 <pre class="terminal">(venv) ~/todosovellus$ cat Procfile
