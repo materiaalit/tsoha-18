@@ -169,17 +169,17 @@ Successfully installed WTForms-2.1 flask-wtf-0.14.2
 </p>
 
 <pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
-from wtforms import TextField
+from wtforms import StringField
 
 class TaskForm(FlaskForm):
-    name = TextField("Task name")
+    name = StringField("Task name")
  
     class Meta:
         csrf = False
 </code></pre>
 
 <p>
-  Jokainen flask-wtf -integraatiota käyttävä lomakeluokka perii FlaskForm-luokan (merkitään <code>class Luokka(<em>perittava</em>)</code>. Erilaisia kenttätyyppejä (esim. tekstikenttä, TextField) löytyy <a href="https://wtforms.readthedocs.io/en/latest/fields.html" target="_blank" norel>WTFormsin dokumentaatiosta</a> sekä netin hakukoneista. 
+  Jokainen flask-wtf -integraatiota käyttävä lomakeluokka perii FlaskForm-luokan (merkitään <code>class Luokka(<em>perittava</em>)</code>. Erilaisia kenttätyyppejä (esim. tekstikenttä, StringField) löytyy <a href="https://wtforms.readthedocs.io/en/latest/fields.html" target="_blank" norel>WTFormsin dokumentaatiosta</a> sekä netin hakukoneista. 
 </p>
 
 
@@ -253,10 +253,10 @@ def tasks_form():
 </p>
 
 <pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
-from wtforms import BooleanField, TextField
+from wtforms import BooleanField, StringField
 
 class TaskForm(FlaskForm):
-    name = TextField("Task name")
+    name = StringField("Task name")
     done = BooleanField("Done")
   
     class Meta:
@@ -393,10 +393,10 @@ def tasks_create():
 </p>
 
 <pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
-from wtforms import BooleanField, TextField, validators
+from wtforms import BooleanField, StringField, validators
 
 class TaskForm(FlaskForm):
-    name = TextField("Task name", [validators.Length(min=2)])
+    name = StringField("Task name", [validators.Length(min=2)])
     done = BooleanField("Done")
   
     class Meta:
@@ -658,10 +658,10 @@ sqlite>
 </p>
 
 <pre class="sh_python code-highlight"><code>from flask_wtf import FlaskForm
-from wtforms import PasswordField, TextField
+from wtforms import PasswordField, StringField
   
 class LoginForm(FlaskForm):
-    username = TextField("Username")
+    username = StringField("Username")
     password = PasswordField("Password")
   
     class Meta:
@@ -1393,7 +1393,7 @@ app.config["SECRET_KEY"] = urandom(32)
 
 from flask_login import LoginManager
 login_manager = LoginManager()
-login_manager.setup_app(app)
+login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
