@@ -934,6 +934,9 @@
   (venv) ~/demo$ 
 <% end %>
 
+<p>
+  Voit nyt tarvittaessa asentaa projektisi riippuvuudet <code>requirements.txt</code>-tiedoston avulla komennolla <code>pip install -r requirements.txt</code>. Jos jossain vaiheessa esimerkiksi kloonaat repositoriosi koodin toiselle koneelle ja aloitat siten työskentelyn "puhtaasta" koodista, voit asentaa riippuvuudet luomaasi uuteen virtuaaliseen ympäristöön.
+</p>
 
 <p>
   Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
