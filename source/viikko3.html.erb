@@ -76,17 +76,17 @@ published: true
 
 <% partial 'partials/python_highlight' do %>
   from flask_wtf import FlaskForm
-  from wtforms import TextField
+  from wtforms import StringField
 
   class TaskForm(FlaskForm):
-      name = TextField("Task name")
+      name = StringField("Task name")
  
       class Meta:
           csrf = False
 <% end %>
 
 <p>
-  Jokainen flask-wtf -integraatiota käyttävä lomakeluokka perii FlaskForm-luokan (merkitään <code>class Luokka(<em>perittava</em>)</code>. Erilaisia kenttätyyppejä (esim. tekstikenttä, TextField) löytyy <a href="https://wtforms.readthedocs.io/en/latest/fields.html" target="_blank" norel>WTFormsin dokumentaatiosta</a> sekä netin hakukoneista. 
+  Jokainen flask-wtf -integraatiota käyttävä lomakeluokka perii FlaskForm-luokan (merkitään <code>class Luokka(<em>perittava</em>)</code>. Erilaisia kenttätyyppejä (esim. tekstikenttä, StringField) löytyy <a href="https://wtforms.readthedocs.io/en/latest/fields.html" target="_blank" norel>WTFormsin dokumentaatiosta</a> sekä netin hakukoneista. 
 </p>
 
 
@@ -161,10 +161,10 @@ published: true
 
 <% partial 'partials/python_highlight' do %>
   from flask_wtf import FlaskForm
-  from wtforms import BooleanField, TextField
+  from wtforms import BooleanField, StringField
 
   class TaskForm(FlaskForm):
-      name = TextField("Task name")
+      name = StringField("Task name")
       done = BooleanField("Done")
   
       class Meta:
@@ -304,10 +304,10 @@ published: true
 
 <% partial 'partials/python_highlight' do %>
   from flask_wtf import FlaskForm
-  from wtforms import BooleanField, TextField, validators
+  from wtforms import BooleanField, StringField, validators
 
   class TaskForm(FlaskForm):
-      name = TextField("Task name", [validators.Length(min=2)])
+      name = StringField("Task name", [validators.Length(min=2)])
       done = BooleanField("Done")
   
       class Meta:
@@ -567,10 +567,10 @@ published: true
 
 <% partial 'partials/python_highlight' do %>
   from flask_wtf import FlaskForm
-  from wtforms import PasswordField, TextField
+  from wtforms import PasswordField, StringField
   
   class LoginForm(FlaskForm):
-      username = TextField("Username")
+      username = StringField("Username")
       password = PasswordField("Password")
   
       class Meta:
@@ -1305,7 +1305,7 @@ published: true
 
   from flask_login import LoginManager
   login_manager = LoginManager()
-  login_manager.setup_app(app)
+  login_manager.init_app(app)
 
   login_manager.login_view = "auth_login"
   login_manager.login_message = "Please login to use this functionality."
