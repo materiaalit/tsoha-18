@@ -1,0 +1,140 @@
+---
+title: Vertaisarviointi
+exercise_page: false
+quiz_page: false
+published: true
+---
+
+
+<% partial 'partials/material_heading' do %>
+  Vertaisarviointi
+<% end %>
+
+<p>
+  Vertaisarviointi on osa harjoitustyötä ja se suoritetaan koodikatselmointina. Katselmointeja on kurssilla kaksi ja niiden arvo kurssin arvostelussa on yhteensä 4 pistettä. 
+</p>
+
+<p>
+  Vertaisarvioinnissa harjoitellaan toisen henkilön toteuttaman sovelluksen toiminnallisuuden tarkastelua sekä sovellukseen liittyvän lähdekoodin toiminnallisuuden ymmärtämistä. Vertaisarvioinnin palaute tarjoaa mahdollisuuden sovelluksen ongelmakohtien tunnistamiseen sekä sovelluksessa olevien virheiden korjaamiseen. Toisten töitä tarkastelemalla voi nähdä myös omasta työskentelystä uusia puolia.
+</p>
+
+<p>
+  <em>
+    Vertaisarviointiohjeet noudattavat osoitteessa <a href="http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html" target="_blank" norel>http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html</a> olevia katselmointiohjeita. Em. ohjeita ovat olleet tekemässä mm. David Consuegra, Harri Laine, Sami Saada, Neo Lehtola ja Lauri Suomalainen.
+  </em>
+</p>
+
+<% partial 'partials/material_sub_heading' do %>
+  Ohjeet
+<% end %>
+
+<p>
+  Näet sinulle osoitetut katselmointikohteet <a href="https://tsoha-labtool.herokuapp.com/mypage" target="_blank" norel>labtoolista</a> koodikatselmoinnin käynnistyttyä. Tehtävänäsi on lukea läpi toisen opiskelijan harjoitustyö ja antaa siitä rakentavaa palautetta. Ohjelmaa kannattaa kokeilla myös Githubissa olevien linkkien linkeistä. Jos sinulle määrätty projekti on tyhjä tai siinä ei ole juurikaan toiminnallisuutta, niin ota yhteyttä ohjaajiin. Saat tällöin toisen katselmointikohteen.
+</p>
+
+<p>
+  Katselmoinnin aloitus:
+</p>
+
+<ul>
+  <li>
+    Lataa zip-pakattu projekti koneellesi annetun repositorion ZIP -painikkeesta
+  </li>
+  <li>
+    Ota talteen kellonaika ja päivä, jolloin latasit projektin
+  </li>
+  <li>
+    Pura projekti
+  </li>
+  <li>
+    Lue ensimmäiseksi projektin aihemäärittely
+  </li>
+  <li>
+    Avaa projektin esittelysivu ja testaa projektia ensin selaimessa. Testaa projektia simuloimalla projektin käyttötapaukset -- saatko kaikki käyttötapaukset tehtyä ja onko niiden tekeminen helppoa ja luontevaa?
+  </li>
+  <li>
+    Tarkastele sovellusta myös saavutettavuuden kannalta. Onko sovelluksessa käytetty oikeita HTML-elementtejä, ovatko sivut loogisessa järjestyksessä, onko mahdollisissa kuvissa tms ohjetekstejä, ja ovatko ne kuvaavia. Työtä kannattaa tarkastella myös valmiita työvälineitä (esim. <a href="https://achecker.ca/checker/index.php" target="_blank" norel>AChecker</a>) käyttäen.
+  </li>
+  <li>
+    Tutustu mahdollisimman kattavasti ohjelmakoodiin
+  </li>
+  <li>
+    Yritä ymmärtää, mitä mikäkin luokka ja metodi tekee -- ovathan luokat, metodit ja muuttujat nimetty kuvaavasti? Onko nimentä johdonmukaista, eli onko eri tiedostoissa samanlaisia asioita tekevät asiat nimetty samankaltaisella tavalla?
+  </li>
+  <li>
+    Ole sinnikäs: Kaikkea ei aina osaa, eikä tarvitsekaan ymmärtää!
+  </li>
+  <li>
+    Haastavin osuus lienee eri luokkien ja sivujen keskinäisten suhteiden hahmottaminen. Käytä hyväksesi toisen piirtämiä kaavioita. Vastaahan kaaviot ja muu sovelluksen dokumentaatio sovelluksen todellista toiminnallisuutta?
+  </li>
+  <li>
+    Kun olet tutustunut riittävän tarkasti toisen projektiin, on aika antaa toiselle henkilölle palaute.
+  </li>
+</ul>
+
+<% partial 'partials/material_sub_heading' do %>
+  Palautteenanto
+<% end %>
+
+
+<p>
+  Palautteessasi kerro toiselle opiskelijalle, missä on parannettavaa ja mitä teit ominaisuuksia tarkastellessasi. Mitä tarkempi palaute, sen arvokkaampaa se on palautteen saajalle. Voit antaa myös vinkkejä siitä, miten asioita voisi tehdä toisin tai onko ohjelman tai tietokannan rakenteessa parannettavaa. Jos havaitsit selkeitä bugeja tai virheellistä koodia, kerro siitä. Kannattaa kertoa myös, mikäli jotkin ohjelman osat eivät toimineet. Tarkoitus ei ole tehdä labtoolin-tyylisiä hieman pintapuolisia mainintoja, vaan tutkia koodia tarkasti ja antaa täsmällisiä parannusehdotuksia. Muista myös positiivinen palaute!
+</p>
+
+<p>
+  Palaute annetaan Githubin Issuena:
+</p>
+
+<ul>
+  <li>
+    Mene selaimellasi toisen opiskelijan repositorioon
+  </li>
+  <li>
+    Valitse välilehti Issues
+  </li>
+  <li>
+    Valitse oikeasta reunasta New Issue
+  </li>
+  <li>
+    Anna otsikko "Koodikatselmointi"
+  </li>
+  <li>
+    Kirjoita palautteesi kommenttilaatikkoon, Preview -välilehdestä näet palautteesi ulkomuodon
+  </li>
+  <li>
+    Kommenttilaatikon yläpuolella on linkki tekstin muotoiluohjeisiin
+  </li>
+  <li>
+    Palautelaatikko tukee myös kuvia
+  </li>
+  <li>
+    Varmuuden vuoksi kopioi kirjoittamasi palaute koneellesi tekstitiedostoon
+  </li>
+  <li>
+    Lisää palautteen alkuun päivä ja kellonaika, jolloin latasit annetun projektin
+  </li>
+  <li>
+    Lähetä palaute valitsemalla Submit new issue
+  </li>
+  <li>
+    Issue eli tässä tapauksessa palaute on koko repositorion tapaan julkinen, joten sen voi lukea kuka tahansa. Ohjaajat lukevat ja pisteyttävät annetun palautteen mahdollisimman pian deadlinen jälkeen.
+  </li>
+</ul>
+
+<p>
+  Kustakin katselmoinnista jaetaan 0-2 pistettä. 5-10 laadukasta rakentavaa palautekommenttia riittää 2 pisteeseen. Palaute kirjoitetaan vapaamuotoisena, mutta yritä kirjoittaa selkeästi. Jaa palaute eri luokista eri kappaleisiin. Jos kirjoitat ranskalaisia viivoja, kirjoita kokonaisia lauseita tai mieluiten useita lauseita. Älä hyökkää palautteessa toista kohtaan! Toisaalta älä ota annettua palautetta itseesi - projektisihan on yhä kesken ja muokattavissa. Palautteen antajakin toisinaan ymmärtää väärin tai antaa virheellisiä ohjeita.
+</p>
+
+<p>
+  Huom. Katselmoinnin kohteen projekti saattaa elää tai päivittyä sillä aikaa, kun kirjoitat palautetta. Tämän vuoksi palautteeseen liitetään aika, jolloin projektin kävi lataamassa itsellensä. Muulla tavalla asiaan ei kiinnitetä tällä kurssilla huomiota, eikä katselmoijan tarvitse aktiivisesti yrittää tarkistaa, jos jokin asia onkin ehtinyt jo muuttumaan. Palaute voi siis olla osin jo vanhentunutta.
+</p>
+
+
+<% partial 'partials/hint', locals: { name: 'Hyvältä vaikuttavan työn arviointi' } do %>
+
+  <p>
+    Mikäli et löydä vertaisarvioitavassa työssä mitään parannettavaa, älä palauta vain "hyvältä näyttää"-tyylistä vertaisarviota. Kerro tällöinkin yksityiskohtaisesti miten kävit sovellusen käyttötapaukset läpi: mitä linkkejä painoit, mitä näit, mihin lopputulokseen pääsit. 
+  </p>
+
+<% end %>
+
