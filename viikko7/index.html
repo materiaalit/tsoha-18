@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tietokantasovellus, kevät 2018, periodi IV | Vertaisarviointi</title>
+    <title>Tietokantasovellus, kevät 2018, periodi IV | Viikko 7</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -51,8 +51,8 @@
       <li class="nav-item ">
         <a href="../python-alkeet/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=python-alkeet.html&gt;')">Python-alkeet</a>
       </li>
-      <li class="nav-item active">
-        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
+      <li class="nav-item ">
+        <a href="../vertaisarviointi/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=vertaisarviointi.html&gt;')">Vertaisarviointi</a>
       </li>
       <li class="nav-item ">
         <a href="../viikko1/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=viikko1.html&gt;')">Viikko 1</a>
@@ -72,8 +72,8 @@
       <li class="nav-item ">
         <a href="../viikko6/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=viikko6.html&gt;')">Viikko 6</a>
       </li>
-      <li class="nav-item ">
-        <a href="../viikko7/" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=viikko7.html&gt;')">Viikko 7</a>
+      <li class="nav-item active">
+        <a href="./" class="nav-link" onclick="ga('send', 'event', 'navigation_topic_link', 'click', '#&lt;Middleman::Sitemap::Resource path=viikko7.html&gt;')">Viikko 7</a>
       </li>
   </ul>
 
@@ -107,148 +107,26 @@
         <div class="container material" id="material">
 
           
-<h1 class="material-heading">
-    Vertaisarviointi
-
-</h1>
-
-<p>
-  Vertaisarviointi on osa harjoitustyötä ja se suoritetaan koodikatselmointina. Katselmointeja on kurssilla kaksi ja niiden arvo kurssin arvostelussa on yhteensä 4 pistettä. 
-</p>
-
-<p>
-  Vertaisarvioinnissa harjoitellaan toisen henkilön toteuttaman sovelluksen toiminnallisuuden tarkastelua sekä sovellukseen liittyvän lähdekoodin toiminnallisuuden ymmärtämistä. Vertaisarvioinnin palaute tarjoaa mahdollisuuden sovelluksen ongelmakohtien tunnistamiseen sekä sovelluksessa olevien virheiden korjaamiseen. Toisten töitä tarkastelemalla voi nähdä myös omasta työskentelystä uusia puolia.
-</p>
-
-<p>
-  <em>
-    Vertaisarviointiohjeet noudattavat osoitteessa <a href="http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html" target="_blank" norel>http://advancedkittenry.github.io/aikataulu/koodikatselmointi.html</a> olevia katselmointiohjeita. Em. ohjeita ovat olleet tekemässä mm. David Consuegra, Harri Laine, Sami Saada, Neo Lehtola ja Lauri Suomalainen.
-  </em>
-</p>
-
-<h2 class="material-heading">
-    Ohjeet
-
-</h2>
-
-<p>
-  Näet sinulle osoitetut katselmointikohteet <a href="https://tsoha-labtool.herokuapp.com/mypage" target="_blank" norel>labtoolista</a> koodikatselmoinnin käynnistyttyä. Tehtävänäsi on lukea läpi toisen opiskelijan harjoitustyö ja antaa siitä rakentavaa palautetta. Ohjelmaa kannattaa kokeilla myös Githubissa olevien linkkien linkeistä. Jos sinulle määrätty projekti on tyhjä tai siinä ei ole juurikaan toiminnallisuutta, niin ota yhteyttä ohjaajiin. Saat tällöin toisen katselmointikohteen.
-</p>
-
-<p>
-  Katselmoinnin aloitus:
-</p>
-
-<ul>
-  <li>
-    Lataa zip-pakattu projekti koneellesi annetun repositorion ZIP -painikkeesta
-  </li>
-  <li>
-    Ota talteen kellonaika ja päivä, jolloin latasit projektin
-  </li>
-  <li>
-    Pura projekti
-  </li>
-  <li>
-    Lue ensimmäiseksi projektin aihemäärittely
-  </li>
-  <li>
-    Avaa projektin esittelysivu ja testaa projektia ensin selaimessa. Testaa projektia simuloimalla projektin käyttötapaukset -- saatko kaikki käyttötapaukset tehtyä ja onko niiden tekeminen helppoa ja luontevaa?
-  </li>
-  <li>
-    Tarkastele sovellusta myös saavutettavuuden kannalta. Onko sovelluksessa käytetty oikeita HTML-elementtejä, ovatko sivut loogisessa järjestyksessä, onko mahdollisissa kuvissa tms ohjetekstejä, ja ovatko ne kuvaavia. Työtä kannattaa tarkastella myös valmiita työvälineitä (esim. <a href="https://achecker.ca/checker/index.php" target="_blank" norel>AChecker</a>) käyttäen.
-  </li>
-  <li>
-    Tutustu mahdollisimman kattavasti ohjelmakoodiin
-  </li>
-  <li>
-    Yritä ymmärtää, mitä mikäkin luokka ja metodi tekee -- ovathan luokat, metodit ja muuttujat nimetty kuvaavasti? Onko nimentä johdonmukaista, eli onko eri tiedostoissa samanlaisia asioita tekevät asiat nimetty samankaltaisella tavalla?
-  </li>
-  <li>
-    Ole sinnikäs: Kaikkea ei aina osaa, eikä tarvitsekaan ymmärtää!
-  </li>
-  <li>
-    Haastavin osuus lienee eri luokkien ja sivujen keskinäisten suhteiden hahmottaminen. Käytä hyväksesi toisen piirtämiä kaavioita. Vastaahan kaaviot ja muu sovelluksen dokumentaatio sovelluksen todellista toiminnallisuutta?
-  </li>
-  <li>
-    Kun olet tutustunut riittävän tarkasti toisen projektiin, on aika antaa toiselle henkilölle palaute.
-  </li>
-</ul>
-
-<h2 class="material-heading">
-    Palautteenanto
-
-</h2>
-
-
-<p>
-  Palautteessasi kerro toiselle opiskelijalle, missä on parannettavaa ja mitä teit ominaisuuksia tarkastellessasi. Mitä tarkempi palaute, sen arvokkaampaa se on palautteen saajalle. Voit antaa myös vinkkejä siitä, miten asioita voisi tehdä toisin tai onko ohjelman tai tietokannan rakenteessa parannettavaa. Jos havaitsit selkeitä bugeja tai virheellistä koodia, kerro siitä. Kannattaa kertoa myös, mikäli jotkin ohjelman osat eivät toimineet. Tarkoitus ei ole tehdä labtoolin-tyylisiä hieman pintapuolisia mainintoja, vaan tutkia koodia tarkasti ja antaa täsmällisiä parannusehdotuksia. Muista myös positiivinen palaute!
-</p>
-
-<p>
-  Palaute annetaan Githubin Issuena:
-</p>
-
-<ul>
-  <li>
-    Mene selaimellasi toisen opiskelijan repositorioon
-  </li>
-  <li>
-    Valitse välilehti Issues
-  </li>
-  <li>
-    Valitse oikeasta reunasta New Issue
-  </li>
-  <li>
-    Anna otsikko "Koodikatselmointi"
-  </li>
-  <li>
-    Kirjoita palautteesi kommenttilaatikkoon, Preview -välilehdestä näet palautteesi ulkomuodon
-  </li>
-  <li>
-    Kommenttilaatikon yläpuolella on linkki tekstin muotoiluohjeisiin
-  </li>
-  <li>
-    Palautelaatikko tukee myös kuvia
-  </li>
-  <li>
-    Varmuuden vuoksi kopioi kirjoittamasi palaute koneellesi tekstitiedostoon
-  </li>
-  <li>
-    Lisää palautteen alkuun päivä ja kellonaika, jolloin latasit annetun projektin
-  </li>
-  <li>
-    Lähetä palaute valitsemalla Submit new issue
-  </li>
-  <li>
-    Issue eli tässä tapauksessa palaute on koko repositorion tapaan julkinen, joten sen voi lukea kuka tahansa. Ohjaajat lukevat ja pisteyttävät annetun palautteen mahdollisimman pian deadlinen jälkeen.
-  </li>
-</ul>
-
-<p>
-  Kustakin katselmoinnista jaetaan 0-2 pistettä. 5-10 laadukasta rakentavaa palautekommenttia riittää 2 pisteeseen. Palaute kirjoitetaan vapaamuotoisena, mutta yritä kirjoittaa selkeästi. Jaa palaute eri luokista eri kappaleisiin. Jos kirjoitat ranskalaisia viivoja, kirjoita kokonaisia lauseita tai mieluiten useita lauseita. Älä hyökkää palautteessa toista kohtaan! Toisaalta älä ota annettua palautetta itseesi - projektisihan on yhä kesken ja muokattavissa. Palautteen antajakin toisinaan ymmärtää väärin tai antaa virheellisiä ohjeita.
-</p>
-
-<p>
-  Huom. Katselmoinnin kohteen projekti saattaa elää tai päivittyä sillä aikaa, kun kirjoitat palautetta. Tämän vuoksi palautteeseen liitetään aika, jolloin projektin kävi lataamassa itsellensä. Muulla tavalla asiaan ei kiinnitetä tällä kurssilla huomiota, eikä katselmoijan tarvitse aktiivisesti yrittää tarkistaa, jos jokin asia onkin ehtinyt jo muuttumaan. Palaute voi siis olla osin jo vanhentunutta.
-</p>
-
-
 <div class="hint">
   <div class="hint__header">
-    <i class="fa fa-info-circle hint__icon"></i>Hyvältä vaikuttavan työn arviointi
+    <i class="fa fa-info-circle hint__icon"></i>Viikon 7 etapit
   </div>
 
   <div class="hint__body">
     
-  <p>
-    Mikäli et löydä vertaisarvioitavassa työssä mitään parannettavaa, älä palauta vain "hyvältä näyttää"-tyylistä vertaisarviota. Kerro tällöinkin yksityiskohtaisesti miten kävit sovellusen käyttötapaukset läpi: mitä linkkejä painoit, mitä näit, mihin lopputulokseen pääsit. 
-  </p>
+  <ul>
+    <li>Viimeiset viilaukset</li>
+    <li>Loppupalautus</li>
+    <li>Demo</li>
+  </ul>
 
 
   </div>
 </div>
 
+<p>
+  Viikolla 7 teet viimeiset viilaukset sovellukseesi sekä sen dokumentaatioon. Tarkasta, että dokumentaatiossa olevat käyttötapaukset vastaavat sovelluksen toiminnallisuutta ja kaaviot tietokantaa. Varmista, että sovellus on käytettävä, ja katso että se on sellaisessa kunnossa, että sen voi ottaa käyttöön ja sitä voi demota muille.
+</p>
 
         </div>
       </div>
@@ -262,7 +140,7 @@
     <a href="https://github.com/materiaalit/tsoha-18/issues/new"  target="_blank" rel="noopener" class="btn btn-primary">
   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Ilmoita virhe
 </a>
-<a href="https://github.com/materiaalit/tsoha-18/edit/master/source/vertaisarviointi.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
+<a href="https://github.com/materiaalit/tsoha-18/edit/master/source/viikko7.html.erb" target="_blank" rel="noopener" class="btn btn-primary">
   <i class="fa fa-pencil" aria-hidden="true"></i> Muokkaa sivua
 </a>
      <a href="https://github.com/materiaalit/tsoha-18" class="footer__github-link" target="_blank" rel="noopener">
