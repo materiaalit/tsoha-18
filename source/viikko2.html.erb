@@ -484,9 +484,9 @@ if __name__ == '__main__':
 </p>
 
 <% partial 'partials/terminal' do %>
-  (venv) ~/todosovellus$ echo "web: gunicorn application:app" > Procfile
+  (venv) ~/todosovellus$ echo "web: gunicorn --preload --workers 1 application:app" > Procfile
   (venv) ~/todosovellus$ cat Procfile
-  web: gunicorn application:app
+  web: gunicorn --preload --workers 1 application:app
   (venv) ~/todosovellus$ 
 <% end %>
 

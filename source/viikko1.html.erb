@@ -943,9 +943,9 @@
 </p>
 
 <% partial 'partials/terminal' do %>
-  (venv) ~/demo$ echo "web: gunicorn hello:app" > Procfile
+  (venv) ~/demo$ echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
   (venv) ~/demo$ cat Procfile
-  web: gunicorn hello:app
+  web: gunicorn --preload --workers 1 hello:app
   (venv) ~/demo$
 <% end %>
 
