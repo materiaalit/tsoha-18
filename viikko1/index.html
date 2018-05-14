@@ -1040,9 +1040,9 @@ Werkzeug==0.14.1
   Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
 </p>
 
-<pre class="terminal">(venv) ~/demo$ echo "web: gunicorn hello:app" > Procfile
+<pre class="terminal">(venv) ~/demo$ echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
 (venv) ~/demo$ cat Procfile
-web: gunicorn hello:app
+web: gunicorn --preload --workers 1 hello:app
 (venv) ~/demo$
 </pre>
 
@@ -1132,7 +1132,7 @@ To https://git.heroku.com/tsoha-python-demo.git
 </pre>
 
 <p>
-  Viikko- ja loppupalautusten arvioinnit perustuvat github-repositoriossasi olevaan koodiin, joten kannattaa myös harkita Herokun automaattisen <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">github-integraation</a> ottamista käyttöön. Tällöin sovellusta ei päivitetä itse Herokuun, vaan Heroku hakee käyttöön automaattisesti kaikki Githubiin talletetut päivitykset sovellukseen.
+  Viikko- ja loppupalautusten arvioinnit perustuvat github-repositoriossasi olevaan koodiin, joten ota käyttöön Herokun automaattinen <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">github-integraatio</a>. Tällöin sovellusta ei päivitetä itse Herokuun, vaan Heroku hakee käyttöön automaattisesti kaikki Githubiin talletetut päivitykset.
 </p>
 
 <h3 class="material-heading">
@@ -1145,7 +1145,11 @@ To https://git.heroku.com/tsoha-python-demo.git
 </p>
 
 <p>
-  Labtoolin osoite on <a href="https://tsoha-labtool.herokuapp.com/" target="_blank" norel>https://tsoha-labtool.herokuapp.com/</a>.
+  Labtoolin osoite ilmoitetaan kurssin courses-sivulla.
+</p>
+
+<p>
+  Jatkossa viikoittaiset palautukset tehdään palauttamalla ajan tasalla oleva koodi Githubiin. Labtoolista voit lukea palautuksista saamasi pisteet ja ohjaajien kommentit.
 </p>
 
         </div>
