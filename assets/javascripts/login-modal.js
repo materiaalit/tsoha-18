@@ -33,6 +33,14 @@ class LoginModal {
     initQuiznator();
     // initStudentDashboard();
 
+    const researchAgreement = localStorage.getItem('research-agreement') || window['research-agreement'] || ""
+    const agreed = researchAgreement.indexOf('j71pjmey1n') !== -1
+    window['research-agreement-agreed'] = agreed
+
+    if (!agreed) {
+      return;
+    }
+
     this.initPheromones();
     this.initLogger();
 
@@ -101,6 +109,7 @@ class LoginModal {
       client.unauthenticate();
 
       try {
+        localStorage.removeItem('research-agreement')
         window.StudentDashboard.destroy();
         window.Quiznator.removeUser();
       } catch(e) {}
