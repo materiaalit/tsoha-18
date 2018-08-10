@@ -1034,7 +1034,7 @@ Werkzeug==0.14.1
 </p>
 
 <p>
-  Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
+  Lisätään seuraavaksi projektille <code>Procfile</code>-niminen tiedosto. Tiedosto <code>Procfile</code> on Herokun odottama tiedosto, joka sisältää Herokun tarvitsemat ohjeet sovelluksen käynnistämiseen. Lisätään ohjeiksi "web: gunicorn --preload --workers 1 hello:app", eli käynnistä <code>hello</code>.py-tiedostosta <code>app</code>-sovellus <code>web</code>-prosessina <code>gunicorn</code>-palvelinta käyttäen.
 </p>
 
 <pre class="terminal">(venv) ~/demo$ echo "web: gunicorn --preload --workers 1 hello:app" > Procfile
@@ -1044,7 +1044,7 @@ web: gunicorn --preload --workers 1 hello:app
 </pre>
 
 <p>
-  Luodaan tämän jälkeen sovellukselle paikka Herokuun. Tässä oletuksena on, että käytössä on Herokun käyttäjätunnus sekä Herokun työvälineet komentoriville (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" norel>Heroku CLI</a>). Paikan luominen tapahtuu komennolla <code>heroku create</code>, jota seuraa toivottu sovelluksen nimi. Sovelluksen nimen tulee olla uniikki, eli alla oleva <code>tsoha-python-demo</code> tulee vaihtaa omaa sovellusta kuvaavaksi. Mikäli nimen jättää pois, Heroku luo satunnaisen nimen sovellukselle.
+  Luodaan tämän jälkeen sovellukselle paikka Herokuun. Tässä oletuksena on, että käytössä on Herokun käyttäjätunnus sekä Herokun työvälineet komentoriville (<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" norel>Heroku CLI</a>). Paikan luominen tapahtuu komennolla <code>heroku create</code>, jota seuraa toivottu sovelluksen nimi. Sovelluksen nimen tulee olla uniikki, eli alla oleva <code>tsoha-python-demo</code> tulee vaihtaa omaa sovellusta kuvaavaksi. Mikäli nimen jättää pois, Heroku luo satunnaisen nimen sovellukselle, mikä riittää tällä kurssilla.
 </p>
 
 <pre class="terminal">(venv) ~/demo$ heroku create tsoha-python-demo
@@ -1142,11 +1142,11 @@ To https://git.heroku.com/tsoha-python-demo.git
 </p>
 
 <p>
-  Voit mennä Labtooliin yllä olevasta linkistä ja etsiä oikean kurssin, mutta jos teet näin. ole tarkkana että valitset oikean kurssin. Kurssin suora rekisteröitymisosoite Labtooliin ilmoitetaan kurssin courses-sivulla, joten kannattaa tehdä rekisteröityminen sitä kautta.
+  Voit mennä Labtooliin yllä olevasta linkistä, etsiä oikean kurssin ja rekisteröityä sille. Kurssin suora rekisteröitymisosoite Labtooliin ilmoitetaan normaalisti kurssin courses-sivulla, joten rekisteröityminen kyseisen sivun kautta voi säästää hieman vaivaa.
 </p>
 
 <p>
-  Jatkossa viikoittaiset palautukset tehdään palauttamalla ajan tasalla oleva koodi Githubiin. Labtoolista voit lukea palautuksista saamasi pisteet ja ohjaajien kommentit.
+  Jatkossa viikoittaiset palautukset tehdään palauttamalla ajan tasalla oleva koodi Githubiin ja päivittämällä sovellus Herokussa. Labtoolista voit lukea palautuksista saamasi pisteet ja ohjaajien kommentit.
 </p>
 
         </div>
