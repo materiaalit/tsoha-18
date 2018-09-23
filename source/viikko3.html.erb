@@ -1366,15 +1366,29 @@ published: true
 </p>
 
 <p>
-  Kun kokeilemme sovellusta verkossa, siihen liittyy pieniä omituisuuksia. Flask-login liitännäinen ei tunnu toimivan oikein. Pienellä googlauksella löytyy <a href="https://stackoverflow.com/questions/39684364/heroku-gunicorn-flask-login-is-not-working-properly" target="_blank" norel>tähän liittyvä keskustelu</a>.
-</p>
-
-<p>
-  Kun kokeilemme keskustelussa mainittua ehdotusta, eli muokkaamme tiedostoa <code>Procfile</code> siten, että käynnistyskomennon lopussa on merkkijono <code>--preload</code>, sovellus toimii toivotulla tavalla.
+  Kun kokeilemme sovellusta verkossa, siihen saattaa liittyy pieniä omituisuuksia. Tarkista, että sovelluksen Procfile sisältää toisen osan ehdotetut parametrit.
 </p>
 
 <% partial 'partials/terminal' do %>
   (venv) ~/todosovellus$ cat Procfile
-  web: gunicorn application:app --preload
+  web: gunicorn --preload --workers 1 application:app
   (venv) ~/todosovellus$ 
 <% end %>
+
+<p>
+  Mikäli sovellus ei vieläkään toimi, Herokuun saa logituksen päälle suoraviivaisesti. Muokkaa <code>run.py</code>-tiedostoa siten, että se sisältää seuraavat <code>app.logger</code>-rivit.
+</p>
+
+<% partial 'partials/python_highlight' do %>
+from application import app
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+<% end %>
+
+<p>
+  Eräs tyypillinen virhe liittyy kirjautumiseen. Mikäli olet kirjautunut ja käynnistät sovelluksen uudelleen, kirjautumistiedot katoaa. Sovellusta kannattaa testata selaimen anonyymimodessa (esim. Chromen "New incognito window"). Kun käynnistät sovelluksen uudelleen, sulje myös selaimen anonyymi-ikkuna ja avaa se uudelleen. Tämän jälkeen kirjaudu sovellukseen ja käytä sitä.
+</p>

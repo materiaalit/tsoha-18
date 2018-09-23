@@ -131,7 +131,7 @@ published: true
 </p>
 
 <p>
-  Lisätään sovelluksen <code>application</code>-kansion <code>__init__.py</code>-tiedostoon rooleja tukeva <code>login_required</code>-dekoraattori keskustelun esimerkin perusteella. Mikäli käyttäjä ei ole kirjautunut, hänellä ei ole pääsyä resurssiin. Mikäli käyttäjä on kirjautunut ja dekoraattoriin on määritelty tietty rooli, tarkastetaan onko käyttäjälle määritelty kyseistä roolia. Mikäli ei, käyttäjällä ei ole pääsyä resurssiin.
+  Lisätään sovelluksen <code>application</code>-kansion <code>__init__.py</code>-tiedostoon rooleja tukeva <code>login_required</code>-dekoraattori keskustelun esimerkin perusteella. Mikäli käyttäjää ei ole tai käyttäjä ei ole kirjautunut, hänellä ei ole pääsyä resurssiin. Mikäli käyttäjä on kirjautunut ja dekoraattoriin on määritelty tietty rooli, tarkastetaan onko käyttäjälle määritelty kyseistä roolia. Mikäli ei, käyttäjällä ei ole pääsyä resurssiin.
 </p>
 
 <% partial 'partials/python_highlight' do %>
@@ -142,6 +142,9 @@ def login_required(role="ANY"):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
+            if not current_user:
+                return login_manager.unauthorized()
+          
             if not current_user.is_authenticated():
                 return login_manager.unauthorized()
             
@@ -205,6 +208,9 @@ def login_required(role="ANY"):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
+            if not current_user:
+                return login_manager.unauthorized()
+
             if not current_user.is_authenticated():
                 return login_manager.unauthorized()
             
