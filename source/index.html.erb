@@ -204,69 +204,100 @@
   Arvostelu
 <% end %>
 
-<% partial 'partials/material_sub_sub_heading' do %>
-  Arvostelu syksy 2018
-<% end %>
-
 <p>
-  Harjoitustyön arvostelu perustuu dokumentaatioon, prosessiin sekä lopullisen sovelluksen toimintaan. Arvostelu ym. käytänteet tarkasteltiin kurssin aloitusluennolla. Aloitusluennon kalvot ym löytyvät <a href="https://docs.google.com/presentation/d/1rZKy7iJDFz4CQwirbXYKx58IVViXcB1bRDNFsmmaoZU/edit#slide=id.gf597b6af_146" target="_blank">tämän linkin</a> takaa.
-</p>
-
-
-<% partial 'partials/material_sub_sub_heading' do %>
-  Arvostelu kesä 2018
-<% end %>
-
-
-<p>
-  Harjoitustyön arvostelu perustuu dokumentaatioon, prosessiin sekä lopullisen sovelluksen toimintaan.
+  Harjoitustyön arvostelu perustuu dokumentaatioon, prosessiin sekä lopullisen sovelluksen toimintaan. Arvostelu ym. käytänteet tarkasteltiin kurssin aloitusluennolla. Syksyn 2018 periodin I aloitusluennon kalvot ym löytyvät <a href="https://docs.google.com/presentation/d/1rZKy7iJDFz4CQwirbXYKx58IVViXcB1bRDNFsmmaoZU/edit#slide=id.gf597b6af_146" target="_blank">tämän linkin</a> takaa.
 </p>
 
 <p>
-  <strong>Dokumentaatio ja tietokantarakenteen järkevyys (18p)</strong>
+  Työ arvostellaan useamman osan summana:
+</p>
+
+<ul>
+  <li>Dokumentaatio, tietokantarakenteen toimivuus valittuun ongelmaan (18p)</li>
+  <li>Tietokannan toteutus ja tietokantaa käyttävän sovelluksen tietokantaa käyttävän osan rakenne, ml. tietoturva (12p)</li>
+  <li>Web-sovelluksen tietokantaan kuulumaton puoli (6p)</li>
+  <li>Käytettävyys (6p)</li>
+  <li>Ylläpidettävyys (6p)</li>
+  <li>Aikataulussa pysyminen, viikkopalautukset, demo ja koodikatselmoinnit (12p)</li>
+</ul>
+
+<p>
+  <strong>Dokumentaatio, tietokantarakenteen toimivuus valittuun ongelmaan</strong>
 </p>
 
 <ul>
   <li>
-    Dokumentaation yleinen sisältö (6p): aiheen kuvaus, sovelluksen käyttöohje, sovelluksen asennusohje, työn ja sovelluksen rajoitteet, työn puuttuvat ominaisuudet, dokumentaation vastaavuus toteutettuun työhön, omat kokemukset.
+    Dokumentaation yleinen sisältö: aiheen kuvaus, sovelluksen käyttöohje, sovelluksen asennusohje, työn ja sovelluksen rajoitteet, työn puuttuvat ominaisuudet, dokumentaation vastaavuus toteutettuun työhön, omat kokemukset.
   </li>
   <li>
-    Tietokantarakenteen kuvaus (6p): täyttää kurssin tavoitteet ja sovelltuu hyvin tarkoitukseensa, tietokantataulujen normalisointi sekä tarvittaessa perustelu normalisoinnin puutteille, tietokantakaavion sisällyttäminen dokumentaatioon, tietokantakaavion ja todellisen tietokannan vastaavuus, dokumentaatiossa CREATE TABLE -lauseet sekä indeksien lisäykset, valittu tietokannanhallintajärjestelmä toimiva ja ongelma-alueeseen sopiva (ei esim SQLiteä Herokussa).
+    Käyttötapaukset / user storyt ja niihin liittyvät SQL-kyselyt: dokumentaatiossa listattuna oleellisimmat käyttäjäryhmät sekä käyttötapaukset (tai user storyt). Käyttötapausten yhteydessä kuvattuna toimivat ja järkevät SQL-kyselyt.
   </li>
   <li>
-    Käyttötapaukset / user storyt ja niihin liittyvät SQL-kyselyt (6p): dokumentaatiossa listattuna oleellisimmat käyttäjäryhmät sekä käyttötapaukset (tai user storyt). Käyttötapausten yhteydessä kuvattuna toimivat ja järkevät SQL-kyselyt.
+    Tietokantarakenteen kuvaus: täyttää kurssin tavoitteet ja sovelltuu hyvin tarkoitukseensa, tietokantataulujen normalisointi sekä tarvittaessa perustelu normalisoinnin puutteille, tietokantakaavion sisällyttäminen dokumentaatioon, tietokantakaavion ja todellisen tietokannan vastaavuus, dokumentaatiossa CREATE TABLE -lauseet sekä indeksien lisäykset, valittu tietokannanhallintajärjestelmä toimiva ja ongelma-alueeseen sopiva (ei esim SQLiteä Herokussa).
   </li>
 </ul>
 
 <p>
-  <strong>Prosessi (18p)</strong>
+  <strong>Tietokannan toteutus ja tietokantaa käyttävän sovelluksen tietokantaa käyttävän osan rakenne, ml. tietoturva</strong>
 </p>
 
 <ul>
   <li>
-    Aikataulutus (2p/viikko, yht 12p): viikoittaisten palautusten tekeminen ajoissa, oma harjoitustyöhön liittyvä ajanhallinta.
-  </li>
-  <li>
-    Vertaistoiminta (2p/kerta, yht 4p): vertaisarviointien ja koodikatselmointien tekeminen kurssin annetussa aikataulussa.
-  </li>
-  <li>
-    Demotilaisuuteen osallistuminen (2p)</strong>
+    Ohjelmassa ei SQL-injektiomahdollisuuksia, isoksi kasvavissa listauksissa sivutus, käyttäjien syötteet validoidaan palvelimella, indeksien käyttö, SQL-virheiden käsittely, kyselyiden toteuttaminen tehokkaasti (yhdellä kyselyllä toteutettavissa olevat asiat tehdään yhdellä kyselyllä useamman sijaan), sovelluksissa käytössä ja toteutettuna monimutkaisempia yhteenvetokyselyitä.
   </li>
 </ul>
 
 <p>
-  <strong>Sovellus (24p)</strong>
+  <strong>Web-sovelluksen tietokantaan kuulumaton puoli</strong>
 </p>
 
 <ul>
   <li>
-    Käytettävyys (6p): sovellus on käytettävä, opittava, muistattava ja käyttäjän näkökulmasta tehokas. Sovelluksen tarjoamat sivut ovat loogisesti rakennettu ja sivut ovat helposti löydettävissä (etusivu sovelluksen juuressa, järkevä yleisvälikko). Käyttäjän syötteet validoidaan. Mahdolliset virhetilanteet tuottavat ymmärrettäviä virheviestejä. Sovellus on käytettävä myös laajemmilla tietomäärillä (sivutus, tiedon hakeminen).
+    Sovellus toimii päällisin puolin (ei rikkinäisiä linkkejä, lomakkeet toimivat kun syöte järkevä)
   </li>
   <li>
-    Tietokanta ja tietokannan yhteentoimivuus sovelluksen kanssa (12p): Ohjelmassa ei SQL-injektiomahdollisuuksia, isoksi kasvavissa listauksissa sivutus, käyttäjien syötteet validoidaan (myös) palvelimella, indeksien käyttö, SQL-virheiden käsittely, kyselyiden toteuttaminen tehokkaasti (yhdellä kyselyllä toteutettavissa olevat asiat tehdään yhdellä kyselyllä useamman sijaan), sovelluksissa käytössä ja toteutettuna monimutkaisempia yhteenvetokyselyitä.
+    Sovellus toimii vaikka syöte ei järkevää (validointi joko palvelimella tai selaimella)
   </li>
   <li>
-    Ylläpidettävyys (6p): Konfiguraatiot sekä paikalliselle kehitysympäristölle että tuotantoympäristölle. Sovellus ei sisällä tuotantoympäristön salasanoja tms. Koodin laatu ok (ei copy-paste koodia, ei pois-kommentoitua koodia jne), sovellus pilkottu selkeitä vastuualueita hoitaviin luokkiin. Sovelluksen koodi on ymmärrettävää, löydettävissä ja tarpeelliset kohdat kommentoitu. Kurssiin syventynyt kurssilainen tai kurssilaisryhmä ymmärtää ohjelman rakenteen ja tavoitteet ohjelmakoodista.
+    Sovelluksen yleiskuva (ml. tyylit) on yhtenäinen ja sen käyttö tuntuu luontevalta
+  </li>
+</ul>
+
+
+<p>
+  <strong>Käytettävyys</strong>
+</p>
+
+<ul>
+  <li>
+    Sovellus on käytettävä, opittava, muistattava ja käyttäjän näkökulmasta tehokas. Sovelluksen tarjoamat sivut ovat loogisesti rakennettu ja sivut ovat helposti löydettävissä (etusivu sovelluksen juuressa, järkevä yleisvälikko). Käyttäjän syötteet validoidaan. Mahdolliset virhetilanteet tuottavat ymmärrettäviä virheviestejä. Sovellus on käytettävä myös laajemmilla tietomäärillä (sivutus, tiedon hakeminen).
+  </li>
+</ul>
+
+
+<p>
+  <strong>Ylläpidettävyys</strong>
+</p>
+
+<ul>
+  <li>
+    Konfiguraatiot sekä paikalliselle kehitysympäristölle että tuotantoympäristölle. Sovellus ei sisällä tuotantoympäristön salasanoja tms. Koodin laatu ok (ei copy-paste koodia, ei pois-kommentoitua koodia jne), sovellus pilkottu selkeitä vastuualueita hoitaviin luokkiin. Sovelluksen koodi on ymmärrettävää, löydettävissä ja tarpeelliset kohdat kommentoitu. Kurssiin syventynyt kurssilainen tai kurssilaisryhmä ymmärtää ohjelman rakenteen ja tavoitteet ohjelmakoodista.
+  </li>
+</ul>
+
+<p>
+  <strong>Aikataulussa pysyminen, viikkopalautukset, demo ja koodikatselmoinnit</strong>
+</p>
+
+<ul>
+  <li>
+    Aikataulutus: palautusten tekeminen ajoissa, oma harjoitustyöhön liittyvä ajanhallinta.
+  </li>
+  <li>
+    Vertaistoiminta: vertaisarviointien ja koodikatselmointien tekeminen kurssin annetussa aikataulussa.
+  </li>
+  <li>
+    Demotilaisuuteen osallistuminen</strong>
   </li>
 </ul>
 
